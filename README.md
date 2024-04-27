@@ -40,4 +40,4 @@ $ make clean
 [RM0090 Reference manual](https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 
 ## Lisence
-[MIT](https://opensource.org/license/mit)
+[MIT](https://github.com/vtarale/STM32F4/blob/main/LICENSE)
