@@ -13,6 +13,13 @@
 * For debugging - `gdb`
 
 ## Running the Code !
+**Note:** While using the library `main()` function has to be replaced by `start()`
+```
+int start() {                   // has to be always int
+  ...
+}
+```
+
 * Currently the code is not complete
 * `openocd` commands left to add in `Makefile`
 
