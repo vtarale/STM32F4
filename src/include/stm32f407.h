@@ -15,9 +15,24 @@
 
 #define RCC_ADDY 0x40023800U
 
+#define GPIOA_VAL 1
+#define GPIOB_VAL 2
+#define GPIOC_VAL 3
+#define GPIOD_VAL 4
+#define GPIOE_VAL 5
+#define GPIOF_VAL 6
+#define GPIOG_VAL 7
+#define GPIOH_VAL 8
+#define GPIOI_VAL 9
+#define GPIOJ_VAL 10
+#define GPIOK_VAL 11
+
 #define __vui volatile unsigned int
 
-typedef struct {
+unsigned int mask(unsigned int shift);
+void reset_handler(void);
+
+struct rcc {
 	__vui CR;
 	__vui PLLCFGR;
 	__vui CFGR;
@@ -48,9 +63,9 @@ typedef struct {
 	__vui RESERVED_7[2];
 	__vui SSCGR;
 	__vui PLLI2SCFGR ;
-}RCC;
+};
 
-typedef struct {
+struct gpio {
 	__vui MODER;	
 	__vui OTYPER;	
 	__vui OSPEEDR;	
@@ -60,6 +75,22 @@ typedef struct {
 	__vui BSRR;	
 	__vui LCKR;	
 	__vui AFR[2];
-}GPIO;
+};
+
+typedef struct rcc RCC;
+typedef struct gpio GPIO;
+
+#define GPIOA ((GPIO *)GPIOA_ADDY)
+#define GPIOB ((GPIO *)GPIOB_ADDY)
+#define GPIOC ((GPIO *)GPIOC_ADDY)
+#define GPIOD ((GPIO *)GPIOD_ADDY)
+#define GPIOE ((GPIO *)GPIOE_ADDY)
+#define GPIOF ((GPIO *)GPIOF_ADDY)
+#define GPIOG ((GPIO *)GPIOG_ADDY)
+#define GPIOH ((GPIO *)GPIOH_ADDY)
+#define GPIOI ((GPIO *)GPIOI_ADDY)
+#define GPIOJ ((GPIO *)GPIOJ_ADDY)
+#define GPIOK ((GPIO *)GPIOK_ADDY)
+
 
 #endif
