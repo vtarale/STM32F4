@@ -237,7 +237,7 @@ typedef struct gpio GPIO;
 #define BS_SET 1
 
 /*
-	LCKK[16]:Lockkey
+	LCKK[16]:Lock key
 	This bit can be read any time. It can only be modified using the lock key write sequence.
 	0: Port configuration lock key not active
 	1: Port configuration lock key active. The GPIOx_LCKR register is locked until an MCU reset or a peripheral reset occurs.
@@ -300,6 +300,9 @@ typedef struct gpio GPIO;
 #define AF_15 15
 
 void reset_handler(void);
-void set_moder(GPIO *x, int state, int gpio, int bit_0, int bit_1);
+void reset_gpio(int x);
+void reset_gpio_all();
+void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
 
 #endif
