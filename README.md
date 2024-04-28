@@ -37,7 +37,7 @@ int start() {                   // has to be always int
           ...
   }
 ```
-1. **GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
+1. *GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
 2. *int state*: Configure the output. Use the macro `OTYPER_PUSH_PULL` .. `OTYPER_OPEN_DRAIN`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15) Use the macro. `PIN_0` .. `PIN_15`
 4. *int bit_0*: Use the macro `PIN_0_BIT_0` .. `PIN_15_BIT_0`
