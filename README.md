@@ -59,6 +59,18 @@ void reset_gpio_all() {
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
 4. *int bit_0*: Use the macro `PIN_x_BIT_0`
 5. *int bit_1*: Use the macro `PIN_x_BIT_1`
+
+* Using `set_ospeedr()`:
+```
+  void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1); {
+          ...
+  }
+```
+1. *GPIO *x**: Use the macro `GPIOx`
+2. *int state*: Configure the speed. Use the macro `OSPEEDR_LOW_SPEED`, `OSPEEDR_MEDIUM_SPEED`, `OSPEEDR_HIGH_SPEED`, `OSPEEDR_VERY_HIGH_SPEED`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
+4. *int bit_0*: Use the macro `PIN_x_BIT_0`
+5. *int bit_1*: Use the macro `PIN_x_BIT_1`
   
 ## Running the Code !
 * Currently the code is not complete
