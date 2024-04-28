@@ -71,6 +71,28 @@ void reset_gpio_all() {
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
 4. *int bit_0*: Use the macro `PIN_x_BIT_0`
 5. *int bit_1*: Use the macro `PIN_x_BIT_1`
+
+* Using `set_pupdr()`:
+```
+void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+          ...
+}
+```
+1. *GPIO *x**: Use the macro `GPIOx`
+2. *int state*: Configure the I/O pull-up or pull-down. Use the macro `PUPDR_NO_PULL_UP_DOWN`, `PUPDR_PULL_UP`, `PUPDR_PULL_DOWN`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
+4. *int bit_0*: Use the macro `PIN_x_BIT_0`
+5. *int bit_1*: Use the macro `PIN_x_BIT_1`
+
+* Using `write()`:
+```
+void write(GPIO *x, int state, int pin) {
+          ...
+}
+```
+1. *GPIO *x**: Use the macro `GPIOx`
+2. *int state*: Specify weather to turn ON(HIGH) or OFF(LOW). Use the macro `HIGH`, `LOW`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
   
 ## Running the Code !
 * Currently the code is not complete
