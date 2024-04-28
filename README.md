@@ -51,8 +51,8 @@ void reset_gpio_all() {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the output. Use the macro `OTYPER_PUSH_PULL`, `OTYPER_OPEN_DRAIN`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro. `PIN_x`
-4. *int bit_0*: Use the macro `PIN_0_BIT_x`
-5. *int bit_1*: Use the macro `PIN_0_BIT_x`
+4. *int bit_0*: Use the macro `PIN_x_BIT_0`
+5. *int bit_1*: Use the macro `PIN_x_BIT_1`
   
 ## Running the Code !
 * Currently the code is not complete
