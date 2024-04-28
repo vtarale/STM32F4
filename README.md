@@ -46,15 +46,15 @@ int start() {                   // has to be always int
 ## Running the Code !
 * Currently the code is not complete
 * `openocd` commands left to add in `Makefile`
-To compile light.c(not yet completed):
+1. To compile light.c(not yet completed):
 ```
 $ make compile_light
 ```
-To analyze(recheck) the code and see the memory(`readelf`):
+2. To analyze(recheck) the code and see the memory(`readelf`):
 ```
 $ make read
 ```
-To clean:
+3. To clean:
 ```
 $ make clean
 ```
