@@ -199,9 +199,9 @@ typedef struct gpio GPIO;
 */
 
 #define OSPEEDR_LOW_SPEED 0
-#define OSPEEDR_MEDIUM_SPEED 2
-#define OSPEEDR_HIGH_SPEED 3
-#define OSPEEDR_VERY_HIGH_SPEED 4
+#define OSPEEDR_MEDIUM_SPEED 1
+#define OSPEEDR_HIGH_SPEED 2
+#define OSPEEDR_VERY_HIGH_SPEED 3
 
 /*
 	PUPDRy[1:0]:Port x configuration bits(y=0..15)
@@ -304,5 +304,7 @@ void reset_gpio(int x);
 void reset_gpio_all();
 void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
 
 #endif
