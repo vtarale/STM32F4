@@ -19,17 +19,28 @@ int start() {                   // has to be always int
   ...
 }
 ```
+* Using `reset_gpio` and `reset_gpio_all`
+```
+void reset_gpio(int x) {
+  ...
+}
+void reset_gpio_all() {
+  ...
+}
+```
+1. Resets all the GPIOs to reset value.
+2. *int x*: Specify GPIO val. Use the macro `GPIOx_VAL`
 * Using `set_moder()`:
 ```
   void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1) {
           ...
   }
 ```
-1. *GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
+1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the register(input, output, alternate function, analog). Use the macro `MODER_INPUT`, `MODER_OUTPUT`, `MODER_AF`, `MODER_ANALOG`
-3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro. `PIN_0` .. `PIN_15`
-4. *int bit_0*: Use the macro `PIN_0_BIT_0` .. `PIN_15_BIT_0`
-5. *int bit_1*: Use the macro `PIN_0_BIT_1` .. `PIN_15_BIT_1`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro. `PIN_x`
+4. *int bit_0*: Use the macro `PIN_x_BIT_0`
+5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
 * Using `set_otyper()`:
 ```
@@ -37,11 +48,11 @@ int start() {                   // has to be always int
           ...
   }
 ```
-1. *GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
+1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the output. Use the macro `OTYPER_PUSH_PULL`, `OTYPER_OPEN_DRAIN`
-3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro. `PIN_0` .. `PIN_15`
-4. *int bit_0*: Use the macro `PIN_0_BIT_0` .. `PIN_15_BIT_0`
-5. *int bit_1*: Use the macro `PIN_0_BIT_1` .. `PIN_15_BIT_1`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro. `PIN_x`
+4. *int bit_0*: Use the macro `PIN_0_BIT_x`
+5. *int bit_1*: Use the macro `PIN_0_BIT_x`
   
 ## Running the Code !
 * Currently the code is not complete
