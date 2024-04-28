@@ -11,6 +11,7 @@ void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void write(GPIO *x, int state, int pin);
 
 void reset_handler(void) {
     start();
@@ -106,25 +107,26 @@ void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     }
 }
 
-/*
 void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     switch (state) {
-        case OSPEEDR_LOW_SPEED:
-            x->OSPEEDR &= ~MASK(bit_0);
-            x->OSPEEDR &= ~MASK(bit_1);
+        case PUPDR_NO_PULL_UP_DOWN:
+            x->PUPDR &= ~MASK(bit_0);
+            x->PUPDR &= ~MASK(bit_1);
             break;
-        case OSPEEDR_MEDIUM_SPEED:
-            x->OSPEEDR |= MASK(bit_0);
-            x->OSPEEDR &= ~MASK(bit_1);
+        case PUPDR_PULL_UP:
+            x->PUPDR |= MASK(bit_0);
+            x->PUPDR &= ~MASK(bit_1);
             break;
-        case OSPEEDR_HIGH_SPEED:
-            x->OSPEEDR &= ~MASK(bit_0);
-            x->OSPEEDR |= MASK(bit_1);
-            break;
-        case OSPEEDR_VERY_HIGH_SPEED:
-            x->OSPEEDR |= MASK(bit_0);
-            x->OSPEEDR |= MASK(bit_1);
+        case PUPDR_PULL_DOWN:
+            x->PUPDR &= ~MASK(bit_0);
+            x->PUPDR |= MASK(bit_1);
             break;
     }
 }
-*/
+
+void write(GPIO *x, int state, int pin) {
+    if (state == HIGH)
+        x->ODR |= MASK(pin);
+    else
+        x->ODR &= ~MASK(pin);
+}

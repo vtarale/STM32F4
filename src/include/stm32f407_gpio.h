@@ -7,6 +7,9 @@ Author: Vihaan Tarale
 
 #define __vui volatile unsigned int
 
+#define HIGH 1
+#define LOW 0
+
 #define GPIOA_ADDY 0x40020000U
 #define GPIOB_ADDY 0x40020400U
 #define GPIOC_ADDY 0x40020800U
@@ -306,5 +309,6 @@ void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void write(GPIO *x, int state, int pin);
 
 #endif
