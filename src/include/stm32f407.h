@@ -1,6 +1,8 @@
 #ifndef COOLSTUFF
 #define COOLSTUFF
 
+#define __vui volatile unsigned int
+
 #define GPIOA_ADDY 0x40020000U
 #define GPIOB_ADDY 0x40020400U
 #define GPIOC_ADDY 0x40020800U
@@ -15,22 +17,18 @@
 
 #define RCC_ADDY 0x40023800U
 
-#define GPIOA_VAL 1
-#define GPIOB_VAL 2
-#define GPIOC_VAL 3
-#define GPIOD_VAL 4
-#define GPIOE_VAL 5
-#define GPIOF_VAL 6
-#define GPIOG_VAL 7
-#define GPIOH_VAL 8
-#define GPIOI_VAL 9
-#define GPIOJ_VAL 10
-#define GPIOK_VAL 11
+#define GPIOA_VAL 0
+#define GPIOB_VAL 1
+#define GPIOC_VAL 2
+#define GPIOD_VAL 3
+#define GPIOE_VAL 4
+#define GPIOF_VAL 5
+#define GPIOG_VAL 6
+#define GPIOH_VAL 7
+#define GPIOI_VAL 8
+#define GPIOJ_VAL 9
+#define GPIOK_VAL 10
 
-#define __vui volatile unsigned int
-
-unsigned int mask(unsigned int shift);
-void reset_handler(void);
 
 struct rcc {
 	__vui CR;
@@ -77,7 +75,7 @@ struct gpio {
 	__vui AFR[2];
 };
 
-typedef struct rcc RCC;
+typedef struct rcc RCC_struct;
 typedef struct gpio GPIO;
 
 #define GPIOA ((GPIO *)GPIOA_ADDY)
@@ -92,5 +90,13 @@ typedef struct gpio GPIO;
 #define GPIOJ ((GPIO *)GPIOJ_ADDY)
 #define GPIOK ((GPIO *)GPIOK_ADDY)
 
+#define RCC ((RCC_struct *)RCC_ADDY)
+
+#define MASK(x) (1UL << x)
+
+#define ENABLE_CLOCK_GPIO(x) (RCC->AHB1ENR |= (MASK(x)))
+#define DISABLE_CLOCK_GPIO(x) (RCC->AHB1ENR &= ~MASK(x))
+
+void reset_handler(void);
 
 #endif
