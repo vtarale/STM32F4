@@ -19,6 +19,12 @@ int start() {                   // has to be always int
   ...
 }
 ```
+* Enable and Disable `clock`
+```
+#define ENABLE_CLOCK_GPIO(x) (RCC->AHB1ENR |= (MASK(x)))
+#define DISABLE_CLOCK_GPIO(x) (RCC->AHB1ENR &= ~MASK(x))
+```
+1. *x*: Specify GPIO val. Use the macro `GPIOx_VAL`
 * Using `reset_gpio` and `reset_gpio_all`
 ```
 void reset_gpio(int x) {
