@@ -12,17 +12,40 @@
 * For checking code and debugging - `readelf`
 * For debugging - `gdb`
 
-## Running the Code !
-**Note:** While using the library `main()` function has to be replaced by `start()`
+## Using the Library
+* While using the library `main()` function has to be replaced by `start()`
 ```
 int start() {                   // has to be always int
   ...
 }
 ```
+* Using `set_moder()`:
+```
+  void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+          ...
+  }
+```
+1. *GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
+2. *int state*: Configure the register(input, output, alternate function, analog). Use the macro `MODER_INPUT` .. `MODER_ANALOG`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15) Use the macro. `PIN_0` .. `PIN_15`
+4. *int bit_0*: Use the macro `PIN_0_BIT_0` .. `PIN_15_BIT_0`
+5. *int bit_1*: Use the macro `PIN_0_BIT_1` .. `PIN_15_BIT_1`
 
+* Using `set_otyper()`:
+```
+  void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+          ...
+  }
+```
+1. **GPIO *x**: Use the macro `GPIOA` .. `GPIOK`
+2. *int state*: Configure the output. Use the macro `OTYPER_PUSH_PULL` .. `OTYPER_OPEN_DRAIN`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15) Use the macro. `PIN_0` .. `PIN_15`
+4. *int bit_0*: Use the macro `PIN_0_BIT_0` .. `PIN_15_BIT_0`
+5. *int bit_1*: Use the macro `PIN_0_BIT_1` .. `PIN_15_BIT_1`
+  
+## Running the Code !
 * Currently the code is not complete
 * `openocd` commands left to add in `Makefile`
-
 To compile light.c(not yet completed):
 ```
 $ make compile_light
