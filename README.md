@@ -46,7 +46,7 @@ void reset_gpio_all() {
 2. *int x*: Specify GPIO val. Use the macro `GPIOx_VAL`
 * Using `set_moder()`:
 ```
-  void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+  void set_moder(GPIO *x, int state, int pin) {
           ...
   }
 ```
@@ -56,7 +56,7 @@ void reset_gpio_all() {
 
 * Using `set_otyper()`:
 ```
-  void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+  void set_otyper(GPIO *x, int state, int pin) {
           ...
   }
 ```
@@ -66,7 +66,7 @@ void reset_gpio_all() {
 
 * Using `set_ospeedr()`:
 ```
-  void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1); {
+  void set_ospeedr(GPIO *x, int state, int pin); {
           ...
   }
 ```
@@ -76,7 +76,7 @@ void reset_gpio_all() {
 
 * Using `set_pupdr()`:
 ```
-void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+void set_pupdr(GPIO *x, int state, int pin) {
           ...
 }
 ```
@@ -86,7 +86,7 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
 
 * Using `set_bsrr()`:
 ```
-  void set_bsrr(GPIO *x, int state, int pin, int bit) {
+  void set_bsrr(GPIO *x, int state, int pin) {
           ...
   }
 ```
