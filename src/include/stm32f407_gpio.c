@@ -21,7 +21,7 @@ void reset_handler(void) {
 
 // Vector Table 
 unsigned int vector_table[96] __attribute__((section(".vec"))) = {
-	0x00, GET_FUNC_ADDY(reset_handler),
+	0x20001000u, GET_FUNC_ADDY(reset_handler),
 	0x00, 0x00,
 	0x00, 0x00,
 	0x00, 0x00,
