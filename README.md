@@ -105,17 +105,17 @@ void write(GPIO *x, int state, int pin) {
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
   
 ## Running the Code !
-* Currently the code is not complete
+* Currently the **code is not complete**
 * `openocd` commands left to add in `Makefile`
-1. To compile light.c(not yet completed):
+1. To compile `light.c`:
 ```
 $ make compile_light
 ```
-2. To analyze(recheck) the code and see the memory(`readelf`):
+2. To analyze(recheck) the code and see the memory (`readelf`):
 ```
 $ make read
 ```
-3. To clean:
+3. To clean (clear `object files`):
 ```
 $ make clean
 ```
