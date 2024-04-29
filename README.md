@@ -1,9 +1,16 @@
 # STM32F4
-* Using the `stm32f4-discovery` board
+* Using the `stm32f407-discovery` board
 * Demo projects
 * Currently, learning the board
 * Coding it in `c`
 * Will make a pid controller with it in future
+
+## Current Status
+**Under Development:**
+* `openocd` implementation in make file left.
+* Little `linker script` left.
+* Some features of `header file` can be used.
+* Currently testing `light.c` on the `stm32f407-discovery` board.
 
 ## Prequistes
 * To flash code on board - `openocd`
