@@ -53,8 +53,6 @@ void reset_gpio_all() {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the register(input, output, alternate function, analog). Use the macro `MODER_INPUT`, `MODER_OUTPUT`, `MODER_AF`, `MODER_ANALOG`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
-4. *int bit_0*: Use the macro `PIN_x_BIT_0`
-5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
 * Using `set_otyper()`:
 ```
@@ -65,8 +63,6 @@ void reset_gpio_all() {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the output. Use the macro `OTYPER_PUSH_PULL`, `OTYPER_OPEN_DRAIN`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
-4. *int bit_0*: Use the macro `PIN_x_BIT_0`
-5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
 * Using `set_ospeedr()`:
 ```
@@ -77,8 +73,6 @@ void reset_gpio_all() {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the speed. Use the macro `OSPEEDR_LOW_SPEED`, `OSPEEDR_MEDIUM_SPEED`, `OSPEEDR_HIGH_SPEED`, `OSPEEDR_VERY_HIGH_SPEED`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
-4. *int bit_0*: Use the macro `PIN_x_BIT_0`
-5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
 * Using `set_pupdr()`:
 ```
@@ -89,8 +83,6 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Configure the I/O pull-up or pull-down. Use the macro `PUPDR_NO_PULL_UP_DOWN`, `PUPDR_PULL_UP`, `PUPDR_PULL_DOWN`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
-4. *int bit_0*: Use the macro `PIN_x_BIT_0`
-5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
 * Using `set_bsrr()`:
 ```
@@ -101,7 +93,6 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
 1. *GPIO *x**: Use the macro `GPIOx`
 2. *int state*: Specify to set or reset GPIOx_ODRX. Use the macro `BR_NO_ACTION`, `BR_RESET`, `BS_NO_ACTION`, `BS_SET`
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
-4. *int bit*: Use the macro `BS_x`, `BR_x`
 
 * Using `write()`:
 ```

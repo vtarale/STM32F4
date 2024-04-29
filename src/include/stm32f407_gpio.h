@@ -101,54 +101,6 @@ typedef struct gpio GPIO;
 #define PIN_14 14
 #define PIN_15 15
 
-#define PIN_0_BIT_0 0
-#define PIN_0_BIT_1 1
-
-#define PIN_1_BIT_0 2
-#define PIN_1_BIT_1 3
-
-#define PIN_2_BIT_0 4
-#define PIN_2_BIT_1 5
-
-#define PIN_3_BIT_0 6
-#define PIN_3_BIT_1 7
-
-#define PIN_4_BIT_0 8
-#define PIN_4_BIT_1 9
-
-#define PIN_5_BIT_0 10
-#define PIN_5_BIT_1 11
-
-#define PIN_6_BIT_0 12
-#define PIN_6_BIT_1 13
-
-#define PIN_7_BIT_0 14
-#define PIN_7_BIT_1 15
-
-#define PIN_8_BIT_0 16
-#define PIN_8_BIT_1 17
-
-#define PIN_9_BIT_0 18
-#define PIN_9_BIT_1 19
-
-#define PIN_10_BIT_0 20
-#define PIN_10_BIT_1 21
-
-#define PIN_11_BIT_0 22
-#define PIN_11_BIT_1 23
-
-#define PIN_12_BIT_0 24
-#define PIN_12_BIT_1 25
-
-#define PIN_13_BIT_0 26
-#define PIN_13_BIT_1 27
-
-#define PIN_14_BIT_0 28
-#define PIN_14_BIT_1 29
-
-#define PIN_15_BIT_0 30
-#define PIN_15_BIT_1 31
-
 #define GPIOA ((GPIO *)GPIOA_ADDY)
 #define GPIOB ((GPIO *)GPIOB_ADDY)
 #define GPIOC ((GPIO *)GPIOC_ADDY)
@@ -226,23 +178,6 @@ typedef struct gpio GPIO;
 	1: Resets the corresponding ODRx bit
 */
 
-#define BR_0 16
-#define BR_1 17
-#define BR_2 18
-#define BR_3 19
-#define BR_4 20
-#define BR_5 21
-#define BR_6 22
-#define BR_7 23
-#define BR_8 24
-#define BR_9 25
-#define BR_10 26
-#define BR_11 27
-#define BR_12 28
-#define BR_13 29
-#define BR_14 30
-#define BR_15 31
-
 #define BR_NO_ACTION 0
 #define BR_RESET 1
 
@@ -252,23 +187,6 @@ typedef struct gpio GPIO;
 	0: No action on the corresponding ODRx bit
 	1: Sets the corresponding ODRx bit
 */
-
-#define BS_0 0
-#define BS_1 1
-#define BS_2 2
-#define BS_3 3
-#define BS_4 4
-#define BS_5 5
-#define BS_6 6
-#define BS_7 7
-#define BS_8 8
-#define BS_9 9
-#define BS_10 10
-#define BS_11 11
-#define BS_12 12
-#define BS_13 13
-#define BS_14 14
-#define BS_15 15
 
 #define BS_NO_ACTION 2
 #define BS_SET 3
@@ -336,14 +254,16 @@ typedef struct gpio GPIO;
 #define AF_14 14
 #define AF_15 15
 
+// Vector Table 
+
 void reset_handler(void);
 void reset_gpio(int x);
 void reset_gpio_all();
-void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_bsrr(GPIO *x, int state, int pin, int bit);
+void set_moder(GPIO *x, int state, int pin);
+void set_otyper(GPIO *x, int state, int pin);
+void set_ospeedr(GPIO *x, int state, int pin);
+void set_pupdr(GPIO *x, int state, int pin);
+void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
 
 #endif

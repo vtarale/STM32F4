@@ -7,11 +7,11 @@ Author: Vihaan Tarale
 void reset_handler(void);
 void reset_gpio(int x);
 void reset_gpio_all();
-void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
-void set_bsrr(GPIO *x, int state, int pin, int bit);
+void set_moder(GPIO *x, int state, int pin);
+void set_otyper(GPIO *x, int state, int pin);
+void set_ospeedr(GPIO *x, int state, int pin);
+void set_pupdr(GPIO *x, int state, int pin);
+void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
 
 void reset_handler(void) {
@@ -46,7 +46,9 @@ void reset_gpio_all() {
     RCC->AHB1RSTR &= ~MASK(GPIOK_VAL);
 }
 
-void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+void set_moder(GPIO *x, int state, int pin) {
+    int bit_0 = pin * 2;
+    int bit_1 = bit_0 + 1;
     switch (state) {
         case MODER_INPUT:
             x->MODER |= MASK(bit_0);
@@ -71,7 +73,7 @@ void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     }
 }
 
-void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+void set_otyper(GPIO *x, int state, int pin) {
     switch (state) {
         case OTYPER_PUSH_PULL:
             x->OTYPER |= MASK(pin);
@@ -83,7 +85,9 @@ void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     }
 }
 
-void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+void set_ospeedr(GPIO *x, int state, int pin) {
+    int bit_0 = pin * 2;
+    int bit_1 = bit_0 + 1;
     switch (state) {
         case OSPEEDR_LOW_SPEED:
             x->OSPEEDR |= MASK(bit_0);
@@ -108,7 +112,9 @@ void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     }
 }
 
-void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
+void set_pupdr(GPIO *x, int state, int pin) {
+    int bit_0 = pin * 2;
+    int bit_1 = bit_0 + 1;
     switch (state) {
         case PUPDR_NO_PULL_UP_DOWN:
             x->PUPDR &= ~MASK(bit_0);
@@ -125,7 +131,11 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
     }
 }
 
-void set_bsrr(GPIO *x, int state, int pin, int bit) {
+void set_bsrr(GPIO *x, int state, int pin) {
+    int bit = pin;
+    if (state > 1) {
+        bit = pin * 2;
+    }
     switch (state) {
         case BR_NO_ACTION:
             x->BSRR |= MASK(bit);
