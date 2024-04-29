@@ -10,7 +10,6 @@ Author: Vihaan Tarale
 #define HIGH 1
 #define LOW 0
 
-#define NULL 0x00
 #define GET_FUNC_ADDY(x) (unsigned int)&x
 
 #define GPIOA_ADDY 0x40020000U
@@ -256,60 +255,6 @@ typedef struct gpio GPIO;
 #define AF_13 13
 #define AF_14 14
 #define AF_15 15
-
-// Vector Table 
-
-unsigned int vector_table[95] __attribute__((section(".vec"))) = {
-	NULL, GET_FUNC_ADDY(reset_handler),
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-	NULL, NULL,
-};
 
 void reset_handler(void);
 void reset_gpio(int x);
