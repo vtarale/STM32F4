@@ -66,7 +66,7 @@ void reset_gpio_all() {
 
 * Using `set_ospeedr()`:
 ```
-  void set_ospeedr(GPIO *x, int state, int pin); {
+  void set_ospeedr(GPIO *x, int state, int pin) {
           ...
   }
 ```
