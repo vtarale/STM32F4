@@ -270,8 +270,8 @@ typedef struct gpio GPIO;
 #define BS_14 14
 #define BS_15 15
 
-#define BS_NO_ACTION 0
-#define BS_SET 1
+#define BS_NO_ACTION 2
+#define BS_SET 3
 
 /*
 	LCKK[16]:Lock key
@@ -343,6 +343,7 @@ void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void set_bsrr(GPIO *x, int state, int pin, int bit);
 void write(GPIO *x, int state, int pin);
 
 #endif

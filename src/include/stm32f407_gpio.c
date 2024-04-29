@@ -11,6 +11,7 @@ void set_moder(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_otyper(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_ospeedr(GPIO *x, int state, int pin, int bit_0, int bit_1);
 void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1);
+void set_bsrr(GPIO *x, int state, int pin, int bit);
 void write(GPIO *x, int state, int pin);
 
 void reset_handler(void) {
@@ -120,6 +121,25 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
         case PUPDR_PULL_DOWN:
             x->PUPDR &= ~MASK(bit_0);
             x->PUPDR |= MASK(bit_1);
+            break;
+    }
+}
+
+void set_bsrr(GPIO *x, int state, int pin, int bit) {
+    switch (state) {
+        case BR_NO_ACTION:
+            x->BSRR |= MASK(bit);
+            x->BSRR &= ~MASK(bit);
+            break;
+        case BR_RESET:
+            x->BSRR |= MASK(bit);
+            break;
+        case BS_NO_ACTION:
+            x->BSRR |= MASK(bit);
+            x->BSRR &= ~MASK(bit);
+            break;
+        case BS_SET:
+            x->BSRR |= MASK(bit);
             break;
     }
 }

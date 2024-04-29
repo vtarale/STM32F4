@@ -92,6 +92,17 @@ void set_pupdr(GPIO *x, int state, int pin, int bit_0, int bit_1) {
 4. *int bit_0*: Use the macro `PIN_x_BIT_0`
 5. *int bit_1*: Use the macro `PIN_x_BIT_1`
 
+* Using `set_bsrr()`:
+```
+  void set_bsrr(GPIO *x, int state, int pin, int bit) {
+          ...
+  }
+```
+1. *GPIO *x**: Use the macro `GPIOx`
+2. *int state*: Specify to set or reset GPIOx_ODRX. Use the macro `BR_NO_ACTION`, `BR_RESET`, `BS_NO_ACTION`, `BS_SET`
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`
+4. *int bit*: Use the macro `BS_x`, `BR_x`
+
 * Using `write()`:
 ```
 void write(GPIO *x, int state, int pin) {
