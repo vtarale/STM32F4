@@ -226,6 +226,23 @@ typedef struct gpio GPIO;
 	1: Resets the corresponding ODRx bit
 */
 
+#define BR_0 16
+#define BR_1 17
+#define BR_2 18
+#define BR_3 19
+#define BR_4 20
+#define BR_5 21
+#define BR_6 22
+#define BR_7 23
+#define BR_8 24
+#define BR_9 25
+#define BR_10 26
+#define BR_11 27
+#define BR_12 28
+#define BR_13 29
+#define BR_14 30
+#define BR_15 31
+
 #define BR_NO_ACTION 0
 #define BR_RESET 1
 
@@ -235,6 +252,23 @@ typedef struct gpio GPIO;
 	0: No action on the corresponding ODRx bit
 	1: Sets the corresponding ODRx bit
 */
+
+#define BS_0 0
+#define BS_1 1
+#define BS_2 2
+#define BS_3 3
+#define BS_4 4
+#define BS_5 5
+#define BS_6 6
+#define BS_7 7
+#define BS_8 8
+#define BS_9 9
+#define BS_10 10
+#define BS_11 11
+#define BS_12 12
+#define BS_13 13
+#define BS_14 14
+#define BS_15 15
 
 #define BS_NO_ACTION 0
 #define BS_SET 1
