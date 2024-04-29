@@ -7,6 +7,7 @@
 
 ## Current Status
 **Under Development:**
+* `vector_table` left
 * `openocd` implementation in make file left.
 * Little `linker script` left.
 * Some features of `header file` can be used.
