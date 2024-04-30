@@ -258,6 +258,7 @@ typedef struct gpio GPIO;
 
 void reset_handler(void);
 void reset_gpio(int x);
+void enable_all_clock();
 void reset_gpio_all();
 void set_moder(GPIO *x, int state, int pin);
 void set_otyper(GPIO *x, int state, int pin);

@@ -7,6 +7,7 @@ Author: Vihaan Tarale
 int start();
 void reset_handler(void);
 void reset_gpio(int x);
+void enable_all_clock();
 void reset_gpio_all();
 void set_moder(GPIO *x, int state, int pin);
 void set_otyper(GPIO *x, int state, int pin);
@@ -74,6 +75,20 @@ unsigned int vector_table[96] __attribute__((section(".vec"))) = {
 void reset_gpio(int x) {
     RCC->AHB1RSTR |= MASK(x); // use of GPIOx_VAL
     RCC->AHB1RSTR &= ~MASK(x);
+}
+
+void enable_all_clock() {
+    ENABLE_CLOCK_GPIO(GPIOA_VAL);
+    ENABLE_CLOCK_GPIO(GPIOB_VAL);
+    ENABLE_CLOCK_GPIO(GPIOC_VAL);
+    ENABLE_CLOCK_GPIO(GPIOD_VAL);
+    ENABLE_CLOCK_GPIO(GPIOE_VAL);
+    ENABLE_CLOCK_GPIO(GPIOF_VAL);
+    ENABLE_CLOCK_GPIO(GPIOG_VAL);
+    ENABLE_CLOCK_GPIO(GPIOH_VAL);
+    ENABLE_CLOCK_GPIO(GPIOI_VAL);
+    ENABLE_CLOCK_GPIO(GPIOJ_VAL);
+    ENABLE_CLOCK_GPIO(GPIOK_VAL);
 }
 
 void reset_gpio_all() {
