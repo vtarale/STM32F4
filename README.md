@@ -7,18 +7,16 @@
 
 ## Current Status
 **Under Development:**
-* `vector_table` left
-* `openocd` implementation in make file left.
-* Little `linker script` left.
-* Some features of `header file` can be used.
-* Currently testing `light.c` on the `stm32f407-discovery` board.
+* `light.c` completed
+* `ADC` implementation left.
+* `DAC` implementation left.
 
 ## Prequistes
 * To flash code on board - `openocd`
 * Arm `32 bit` compiler - `arm-none-eabi-gcc`
 * `nostdlib`
 * For checking code and debugging - `readelf`
-* For debugging - `gdb`
+* For debugging - `gdb`, `lldb` (for mac)
 
 ## Using the Library
 * While using the library `main()` function has to be replaced by `start()`
