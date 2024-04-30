@@ -15,6 +15,8 @@ void set_ospeedr(GPIO *x, int state, int pin);
 void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
+int read(GPIO *x, int pin);
+void set_af(GPIO *x, int state, int pin);
 
 void reset_handler(void) {
     start();
@@ -227,4 +229,149 @@ void write(GPIO *x, int state, int pin) {
         x->ODR |= MASK(pin);
     else
         x->ODR &= ~MASK(pin);
+}
+
+int read(GPIO *x, int pin) {
+    if (!(x->IDR &(MASK(pin))))
+        return HIGH;
+    if ((x->IDR &(MASK(pin))))
+        return LOW;
+}
+
+void set_af(GPIO *x, int state, int pin) {
+    if (pin < 8) {
+        switch (state) {
+            case AF_0:
+                break; // 0000
+            case AF_1:
+                x->AFR_1 |= MASK(pin * 4); // 0001
+                break;
+            case AF_2:
+                x->AFR_1 |= MASK((pin * 4) + 1); // 0010
+                break;
+            case AF_3:
+                x->AFR_1 |= MASK(pin * 4); // 0011
+                x->AFR_1 |= MASK((pin * 4) + 1);
+                break;
+            case AF_4:
+                x->AFR_1 |= MASK((pin * 4) + 2); // 0100
+                break;
+            case AF_5:
+                x->AFR_1 |= MASK(pin * 4); // 0101
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                break;
+            case AF_6:
+                x->AFR_1 |= MASK((pin * 4) + 1); // 0110
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                break;
+            case AF_7:
+                x->AFR_1 |= MASK(pin * 4); // 0111
+                x->AFR_1 |= MASK((pin * 4) + 1);
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                break;
+            case AF_8:
+                x->AFR_1 |= MASK((pin * 4) + 3); // 1000
+                break;
+            case AF_9:
+                x->AFR_1 |= MASK(pin * 4); // 1001
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_10:
+                x->AFR_1 |= MASK((pin * 4) + 1); // 1010
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_11:
+                x->AFR_1 |= MASK(pin * 4); // 1011
+                x->AFR_1 |= MASK((pin * 4) + 1);
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_12:
+                x->AFR_1 |= MASK((pin * 4) + 2); // 1100
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_13:
+                x->AFR_1 |= MASK(pin * 4); // 1101
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_14:
+                x->AFR_1 |= MASK((pin * 4) + 1); // 1110
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+            case AF_15:
+                x->AFR_1 |= MASK(pin * 4); // 1111
+                x->AFR_1 |= MASK((pin * 4) + 1);
+                x->AFR_1 |= MASK((pin * 4) + 2);
+                x->AFR_1 |= MASK((pin * 4) + 3);
+                break;
+        }
+    } else {
+        switch (state) {
+            case AF_0:
+                break; // 0000
+            case AF_1:
+                x->AFR_2 |= MASK(pin * 4); // 0001
+                break;
+            case AF_2:
+                x->AFR_2 |= MASK((pin * 4) + 1); // 0010
+                break;
+            case AF_3:
+                x->AFR_2 |= MASK(pin * 4); // 0011
+                x->AFR_2 |= MASK((pin * 4) + 1);
+                break;
+            case AF_4:
+                x->AFR_2 |= MASK((pin * 4) + 2); // 0100
+                break;
+            case AF_5:
+                x->AFR_2 |= MASK(pin * 4); // 0101
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                break;
+            case AF_6:
+                x->AFR_2 |= MASK((pin * 4) + 1); // 0110
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                break;
+            case AF_7:
+                x->AFR_2 |= MASK(pin * 4); // 0111
+                x->AFR_2 |= MASK((pin * 4) + 1);
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                break;
+            case AF_8:
+                x->AFR_2 |= MASK((pin * 4) + 3); // 1000
+                break;
+            case AF_9:
+                x->AFR_2 |= MASK(pin * 4); // 1001
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_10:
+                x->AFR_2 |= MASK((pin * 4) + 1); // 1010
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_11:
+                x->AFR_2 |= MASK(pin * 4); // 1011
+                x->AFR_2 |= MASK((pin * 4) + 1);
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_12:
+                x->AFR_2 |= MASK((pin * 4) + 2); // 1100
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_13:
+                x->AFR_2 |= MASK(pin * 4); // 1101
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_14:
+                x->AFR_2 |= MASK((pin * 4) + 1); // 1110
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+            case AF_15:
+                x->AFR_2 |= MASK(pin * 4); // 1111
+                x->AFR_2 |= MASK((pin * 4) + 1);
+                x->AFR_2 |= MASK((pin * 4) + 2);
+                x->AFR_2 |= MASK((pin * 4) + 3);
+                break;
+        }
+    }
 }

@@ -5,14 +5,11 @@
 * Coding it in `c`.
 * Will make a pid controller with it in future.
 
-**Ex:**`light.c`
-
-https://github.com/vtarale/STM32F4/assets/66897674/9022290f-fcd7-4da7-b73b-dd06e05f8314
-
 ## Current Status
+* `stm32f407_gpio.h` complete (now can be used !!). 
+* `light.c` complete.
+
 **Under Development:**
-* `AF`, `LCKR` and `input()` are still incomplete.
-* `light.c` and the `header file` now can be used.
 * `ADC` implementation left.
 * `DAC` implementation left.
 
@@ -111,6 +108,26 @@ void write(GPIO *x, int state, int pin) {
 ```
 1. *GPIO *x**: Use the macro `GPIOx`.
 2. *int state*: Specify weather to turn ON(HIGH) or OFF(LOW). Use the macro `HIGH`, `LOW`.
+3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`.
+
+* Using `read()`:
+```
+int read(GPIO *x, int pin) {
+          ...
+}
+```
+1. *GPIO *x**: Use the macro `GPIOx`.
+2. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`.
+3. Returns `HIGH` or `LOW`
+
+* Using `set_af()`:
+```
+void set_af(GPIO *x, int state, int pin) {
+          ...
+}
+```
+1. *GPIO *x**: Use the macro `GPIOx`.
+2. *int state*: Specify which `alternate function`. Use the macro `AF_x`.
 3. *int pin*: Specify which GPIO Pin you are using(A0 .. A15). Use the macro `PIN_x`.
   
 ## Running the Code !

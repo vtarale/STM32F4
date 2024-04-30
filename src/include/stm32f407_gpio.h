@@ -80,7 +80,8 @@ struct gpio {
 	__vui ODR;	
 	__vui BSRR;	
 	__vui LCKR;	
-	__vui AFR[2];
+	__vui AFR_1;
+	__vui AFR_2;
 };
 
 typedef struct rcc RCC_struct;
@@ -194,32 +195,6 @@ typedef struct gpio GPIO;
 #define BS_SET 3
 
 /*
-	LCKK[16]:Lock key
-	This bit can be read any time. It can only be modified using the lock key write sequence.
-	0: Port configuration lock key not active
-	1: Port configuration lock key active. The GPIOx_LCKR register is locked until an MCU reset or a peripheral reset occurs.
-
-	LOCK key write sequence:
-	WR LCKR[16] = ‘1’ + LCKR[15:0]
-	WR LCKR[16] = ‘0’ + LCKR[15:0]
-	WR LCKR[16] = ‘1’ + LCKR[15:0]
-	RD LCKR
-	RD LCKR[16] = ‘1’ (this read operation is optional but it confirms that the lock is active)
-
-	Note: During the LOCK key write sequence, the value of LCK[15:0] must not change. Any error in the lock sequence aborts the lock.
-	After the first lock sequence on any bit of the port, any read access on the LCKK bit returns ‘1’ until the next CPU reset.
-	
-	Bits15:0 LCKy:Port x lock bit y(y=0..15)
-	These bits are read/write but can only be written when the LCKK bit is ‘0.
-	0: Port configuration not locked
-	1: Port configuration locked
-
-*/
-
-#define LCK_UNLOCKED 0
-#define LCK_LOCKED 1
-
-/*
 	for AFRL and AFRH: 
 	0000: AF0
 	0001: AF1
@@ -266,5 +241,7 @@ void set_ospeedr(GPIO *x, int state, int pin);
 void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
+int read(GPIO *x, int pin);
+void set_af(GPIO *x, int state, int pin);
 
 #endif
