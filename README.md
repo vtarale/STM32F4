@@ -1,9 +1,6 @@
 # STM32F4
 * Using the `stm32f407-discovery` board.
-* Demo projects.
-* Currently, learning the board.
-* Coding it in `c`.
-* Will make a pid controller with it in future.
+* Making PID Controller
 
 ## Current Status
 * `stm32f407_gpio.h` complete (now can be used !!). 
