@@ -1,9 +1,13 @@
 # STM32F4
-* Using the `stm32f407-discovery` board
-* Demo projects
-* Currently, learning the board
-* Coding it in `c`
-* Will make a pid controller with it in future
+* Using the `stm32f407-discovery` board.
+* Demo projects.
+* Currently, learning the board.
+* Coding it in `c`.
+* Will make a pid controller with it in future.
+
+**Ex:**`light.c`
+
+https://github.com/vtarale/STM32F4/assets/66897674/9022290f-fcd7-4da7-b73b-dd06e05f8314
 
 ## Current Status
 **Under Development:**
