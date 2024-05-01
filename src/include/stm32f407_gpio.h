@@ -10,6 +10,9 @@ Author: Vihaan Tarale
 #define HIGH 1
 #define LOW 0
 
+#define ON 1
+#define OFF 0
+
 #define GET_FUNC_ADDY(x) (unsigned int)&x
 
 #define GPIOA_ADDY 0x40020000U

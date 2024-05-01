@@ -51,7 +51,29 @@ typedef struct adc_common ADC_COM;
 
 #define ADC_COMMON ((ADC_COM *)ADC_COMMON_ADDY)
 
-void set_adc();
+#define ADC_1_CLOCK_BIT 8
+#define ADC_2_CLOCK_BIT 9
+#define ADC_3_CLOCK_BIT 10
+
+#define ENABLE_CLOCK_ADC_1 (RCC->APB2ENR |= MASK(ADC_1_CLOCK_BIT))
+#define ENABLE_CLOCK_ADC_2 (RCC->APB2ENR |= MASK(ADC_2_CLOCK_BIT))
+#define ENABLE_CLOCK_ADC_3 (RCC->APB2ENR |= MASK(ADC_3_CLOCK_BIT))
+
+#define DISABLE_CLOCK_ADC_1 (RCC->APB2ENR &= ~MASK(ADC_1_CLOCK_BIT))
+#define DISABLE_CLOCK_ADC_2 (RCC->APB2ENR &= ~MASK(ADC_2_CLOCK_BIT))
+#define DISABLE_CLOCK_ADC_3 (RCC->APB2ENR &= ~MASK(ADC_3_CLOCK_BIT))
+
+#define RES_BIT_0 24
+#define RES_BIT_1 25
+
+#define RES_12 0
+#define RES_10 1
+#define RES_8 2
+#define RES_6 3
+
+#define SCAN_BIT 8
+
+void set_adc(ADC *x, int res, int scan); // regular channels only
 
 
 #endif
