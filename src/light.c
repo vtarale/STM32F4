@@ -20,8 +20,8 @@ int start() {
     set_pupdr(GPIOD, PUPDR_NO_PULL_UP_DOWN, PIN_12);
     while(1) {
         write(GPIOD, LOW, PIN_12);
-        delay(100000);
+        delay(500000);
         write(GPIOD, HIGH, PIN_12);
-        delay(100000);
+        delay(500000);
     }
 }

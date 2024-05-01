@@ -235,9 +235,8 @@ typedef struct gpio GPIO;
 #define AF_15 15
 
 void reset_handler(void);
-void reset_gpio(int x);
 void enable_all_clock();
-void reset_gpio_all();
+void disable_all_clock();
 void set_moder(GPIO *x, int state, int pin);
 void set_otyper(GPIO *x, int state, int pin);
 void set_ospeedr(GPIO *x, int state, int pin);

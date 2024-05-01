@@ -63,17 +63,26 @@ typedef struct adc_common ADC_COM;
 #define DISABLE_CLOCK_ADC_2 (RCC->APB2ENR &= ~MASK(ADC_2_CLOCK_BIT))
 #define DISABLE_CLOCK_ADC_3 (RCC->APB2ENR &= ~MASK(ADC_3_CLOCK_BIT))
 
-#define RES_BIT_0 24
-#define RES_BIT_1 25
+/*
+RES[1:0]: Resolution
+These bits are written by software to select the resolution of the conversion
+00: 12-bit (15 ADCCLK cycles)
+01: 10-bit (13 ADCCLK cycles)
+10: 8-bit (11 ADCCLK cycles)
+11: 6-bit (9 ADCCLK cycles)
+*/
 
 #define RES_12 0
 #define RES_10 1
 #define RES_8 2
 #define RES_6 3
 
+#define RES_BIT 24
+
 #define SCAN_BIT 8
 
 void set_adc(ADC *x, int res, int scan); // regular channels only
+int start_convo(ADC *x);
 
 
 #endif
