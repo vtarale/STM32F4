@@ -81,7 +81,48 @@ These bits are written by software to select the resolution of the conversion
 
 #define SCAN_BIT 8
 
-void set_adc(ADC *x, int res, int scan); // regular channels only
+#define CHANEL_0 0
+#define CHANEL_1 1
+#define CHANEL_2 2
+#define CHANEL_3 3
+#define CHANEL_4 4
+#define CHANEL_5 5
+#define CHANEL_6 6
+#define CHANEL_7 7
+#define CHANEL_8 8
+#define CHANEL_9 9
+#define CHANEL_10 10
+#define CHANEL_11 11
+#define CHANEL_12 12
+#define CHANEL_13 13
+#define CHANEL_14 14
+#define CHANEL_15 15
+#define CHANEL_16 16
+#define CHANEL_17 17
+#define CHANEL_18 18
+
+#define SET_SQ_1(x, y) (x->SQR3 |= y << 0) 
+#define SET_SQ_2(x, y) (x->SQR3 |= y << 5) 
+#define SET_SQ_3(x, y) (x->SQR3 |= y << 10) 
+#define SET_SQ_4(x, y) (x->SQR3 |= y << 15) 
+#define SET_SQ_5(x, y) (x->SQR3 |= y << 20)
+#define SET_SQ_6(x, y) (x->SQR3 |= y << 25)  
+
+#define SET_SQ_7(x, y) (x->SQR2 |= y << 0) 
+#define SET_SQ_8(x, y) (x->SQR2 |= y << 5) 
+#define SET_SQ_9(x, y) (x->SQR2 |= y << 10) 
+#define SET_SQ_10(x, y) (x->SQR2 |= y << 15) 
+#define SET_SQ_11(x, y) (x->SQR2 |= y << 20)
+#define SET_SQ_12(x, y) (x->SQR2 |= y << 25) 
+
+#define SET_SQ_13(x, y) (x->SQR1 |= y << 0) 
+#define SET_SQ_14(x, y) (x->SQR1 |= y << 5) 
+#define SET_SQ_15(x, y) (x->SQR1 |= y << 10) 
+#define SET_SQ_16(x, y) (x->SQR1 |= y << 15) 
+
+#define SET_NO_OF_CONVERSIONS(x, y) (x->SQR1 |= y << 20)
+
+void set_adc(ADC *x, int res, int scan, int no_of_convo); // regular channels only
 int start_convo(ADC *x);
 
 
