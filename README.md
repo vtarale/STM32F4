@@ -33,19 +33,27 @@ int start() {                   // has to be always int
 ```
 $ make compile_light
 ```
-2. To flash the code onto the board:
+2. To compile `adc.c`:
+```
+$ make compile_adc
+```
+3. To compile `usart.c`:
+```
+$ make compile_usart
+```
+4. To `flash` the code onto the board:
 ```
 $ make run
 ```
-3. To `debug`:
+5. To `debug`:
 ```
 $ make debug
 ```
-4. To analyze(recheck) the code and see the memory (`readelf`):
+6. To analyze(recheck) the code and see the memory (`readelf`):
 ```
 $ make read
 ```
-5. To clean (clear `object files`):
+7. To clean (clear `object files`):
 ```
 $ make clean
 ```
