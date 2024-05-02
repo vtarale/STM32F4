@@ -244,6 +244,6 @@ void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
 int read(GPIO *x, int pin);
-void set_af(GPIO *x, int state, int pin);
+void set_af(GPIO *x, int function, int pin);
 
 #endif

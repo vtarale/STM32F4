@@ -15,7 +15,7 @@ void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
 void write(GPIO *x, int state, int pin);
 int read(GPIO *x, int pin);
-void set_af(GPIO *x, int state, int pin);
+void set_af(GPIO *x, int function, int pin);
 
 void reset_handler(void) {
     start();
@@ -137,9 +137,9 @@ int read(GPIO *x, int pin) {
     return LOW;
 }
 
-void set_af(GPIO *x, int state, int pin) {
+void set_af(GPIO *x, int function, int pin) {
     if (pin < 8)
-        x->AFR_1 |= state << (pin * 4);
+        x->AFR_1 |= function << (pin * 4);
     else
-        x->AFR_2 |= state << (pin * 4);
+        x->AFR_2 |= function << (pin * 4);
 }
