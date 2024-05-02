@@ -101,6 +101,15 @@ These bits are written by software to select the resolution of the conversion
 #define CHANEL_17 17
 #define CHANEL_18 18
 
+#define CYCLES_3 0
+#define CYCLES_15 1
+#define CYCLES_28 2
+#define CYCLES_56 3
+#define CYCLES_84 4
+#define CYCLES_112 5
+#define CYCLES_144 6
+#define CYCLES_480 7
+
 #define SET_SQ_1(x, y) (x->SQR3 |= y << 0) 
 #define SET_SQ_2(x, y) (x->SQR3 |= y << 5) 
 #define SET_SQ_3(x, y) (x->SQR3 |= y << 10) 
@@ -123,6 +132,7 @@ These bits are written by software to select the resolution of the conversion
 #define SET_NO_OF_CONVERSIONS(x, y) (x->SQR1 |= y << 20)
 
 void set_adc(ADC *x, int res, int scan, int no_of_convo); // regular channels only
+void set_sampling_time(ADC *x, int channel, int sampling_time);
 int start_convo(ADC *x);
 
 
