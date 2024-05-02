@@ -55,13 +55,8 @@ typedef struct adc_common ADC_COM;
 #define ADC_2_CLOCK_BIT 9
 #define ADC_3_CLOCK_BIT 10
 
-#define ENABLE_CLOCK_ADC_1 (RCC->APB2ENR |= MASK(ADC_1_CLOCK_BIT))
-#define ENABLE_CLOCK_ADC_2 (RCC->APB2ENR |= MASK(ADC_2_CLOCK_BIT))
-#define ENABLE_CLOCK_ADC_3 (RCC->APB2ENR |= MASK(ADC_3_CLOCK_BIT))
-
-#define DISABLE_CLOCK_ADC_1 (RCC->APB2ENR &= ~MASK(ADC_1_CLOCK_BIT))
-#define DISABLE_CLOCK_ADC_2 (RCC->APB2ENR &= ~MASK(ADC_2_CLOCK_BIT))
-#define DISABLE_CLOCK_ADC_3 (RCC->APB2ENR &= ~MASK(ADC_3_CLOCK_BIT))
+#define ENABLE_CLOCK_ADC(x) (RCC->APB2ENR |= MASK(x))
+#define DISABLE_CLOCK_ADC(x) (RCC->APB2ENR &= ~MASK(x))
 
 /*
 RES[1:0]: Resolution
@@ -78,8 +73,8 @@ These bits are written by software to select the resolution of the conversion
 #define RES_6 3
 
 #define RES_BIT 24
-
 #define SCAN_BIT 8
+#define ALIGN_BIT 11
 
 #define CHANEL_0 0
 #define CHANEL_1 1

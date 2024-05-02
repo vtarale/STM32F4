@@ -15,7 +15,8 @@ void set_adc(ADC *x, int res, int scan, int no_of_convo) {
     else
         x->CR1 &= ~MASK(SCAN_BIT);
 
-    SET_NO_OF_CONVERSIONS(x, no_of_convo);
+    x->CR2 &= ~MASK(ALIGN_BIT);
+    SET_NO_OF_CONVERSIONS(x, (no_of_convo - 1));
 }
 
 void set_sampling_time(ADC *x, int channel, int sampling_time) {
