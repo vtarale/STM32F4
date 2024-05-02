@@ -6,6 +6,7 @@
 * `stm32f407_gpio.h` complete (now can be used !!). 
 * `light.c` complete.
 * `ADC` testing going on.
+* `USART` testing going on.
 
 **Under Development:**
 * `DAC` implementation left.
@@ -16,6 +17,7 @@
 * `nostdlib`
 * For checking code and debugging - `readelf`
 * For debugging - `gdb`, `lldb` (for mac)
+* For `usart` - `qemu`
 
 ## Using the Library
 **Caution**: while using library `global variables` can't be used.
