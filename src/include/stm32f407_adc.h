@@ -75,6 +75,10 @@ These bits are written by software to select the resolution of the conversion
 #define RES_BIT 24
 #define SCAN_BIT 8
 #define ALIGN_BIT 11
+#define SWSTART_BIT 30
+#define ADCON_BIT 0
+#define EOCS_BIT 10
+#define EOC_BIT 1
 
 #define CHANEL_0 0
 #define CHANEL_1 1
@@ -126,9 +130,15 @@ These bits are written by software to select the resolution of the conversion
 
 #define SET_NO_OF_CONVERSIONS(x, y) (x->SQR1 |= y << 20)
 
+#define ENABLE_ADCON(x) (x->CR2 |= MASK(ADCON_BIT))
+#define DISABLE_ADCON(x) (x->CR2 &= ~MASK(ADCON_BIT))
+
+#define ENABLE_EOCS(x) (x->CR2 |= MASK(EOCS_BIT))
+#define DISABLE_EOCS(x) (x->CR2 &= ~MASK(EOCS_BIT))
+
 void set_adc(ADC *x, int res, int scan, int no_of_convo); // regular channels only
 void set_sampling_time(ADC *x, int channel, int sampling_time);
-int start_convo(ADC *x);
+unsigned int start_convo(ADC *x);
 
 
 #endif

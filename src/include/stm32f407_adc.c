@@ -6,6 +6,7 @@ Author: Vihaan Tarale
 
 void set_adc(ADC *x, int res, int scan, int no_of_convo);
 void set_sampling_time(ADC *x, int channel, int sampling_time);
+unsigned int start_convo(ADC *x);
 
 void set_adc(ADC *x, int res, int scan, int no_of_convo) {
     x->CR1 |= res << RES_BIT;
@@ -24,4 +25,11 @@ void set_sampling_time(ADC *x, int channel, int sampling_time) {
         x->SMPR2 |= sampling_time << (channel * 3);
     else
         x->SMPR1 |= sampling_time << (channel * 3);
+}
+
+unsigned int start_convo(ADC *x) {
+    x->CR2 |= MASK(SWSTART_BIT);
+    while(!(x->SR & EOC_BIT));
+    unsigned int result = x->DR;
+    return result;
 }
