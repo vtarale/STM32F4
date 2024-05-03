@@ -9,7 +9,7 @@ void send_char(char c);
 void send_string(char *s);
 char get_char();
 int poll_rx();
-char read();
+char read_usart();
 
 void set_usart() {
     ENABLE_CLOCK_GPIO(GPIOA_VAL);
@@ -20,7 +20,11 @@ void set_usart() {
     set_af(GPIOA, AF_7, USART_PIN_1);
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_0);
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_1);
-    USART_CLEAR_ALL; ENABLE_USART; SET_BAUDRATE; ENABLE_TX; ENABLE_RX;
+    USART->CR1 = 0x00;
+    USART->CR1 |= MASK(UE_BIT);
+    USART->BRR |= (7 << FRACTION_BIT) | (24 << MANTISSA_BIT); 
+    USART->CR1 |= MASK(TX_BIT); 
+    USART->CR1 |= MASK(RX_BIT);
 }
 
 void send_char(char c) {
@@ -44,6 +48,6 @@ int poll_rx() {
     return LOW;
 }
 
-char read() {
+char read_usart() {
     return (char)USART->DR;
 }

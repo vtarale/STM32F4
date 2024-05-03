@@ -2,7 +2,7 @@
 Author: Vihaan Tarale
 */
 
-#include "stm32f407_usart.h"
+#include "include/stm32f407_usart.h"
 
 int start() {
     set_usart();
@@ -12,7 +12,7 @@ int start() {
         send_string("HELLO_WORLD");
         check = poll_rx();
         if (check == HIGH)
-            c = read();
+            c = read_usart();
             send_char(c);
     }
 }
