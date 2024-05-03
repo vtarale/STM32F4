@@ -24,7 +24,7 @@ void set_sampling_time(ADC *x, int channel, int sampling_time) {
 
 unsigned int start_convo(ADC *x) {
     x->CR2 |= MASK(SWSTART_BIT);
-    while(!(x->SR & EOC_BIT));
+    while(!(x->SR & MASK(EOC_BIT)));
     unsigned int result = x->DR;
     return result;
 }
