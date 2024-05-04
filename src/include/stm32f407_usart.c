@@ -13,7 +13,7 @@ char read_usart();
 
 void set_usart() {
     ENABLE_CLOCK_GPIO(GPIOA_VAL);
-    ENABLE_CLOCK_USART;
+    RCC->APB1ENR |= MASK(USART_CLOCK_BIT);
     set_moder(GPIOA, MODER_AF, USART_PIN_0);
     set_moder(GPIOA, MODER_AF, USART_PIN_1);
     set_af(GPIOA, AF_7, USART_PIN_0);
@@ -21,10 +21,11 @@ void set_usart() {
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_0);
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_1);
     USART->CR1 = 0x00;
+    USART->CR1 |= MASK(UE_BIT);
+    USART->CR1 &= ~MASK(12);
     USART->BRR |= (7 << FRACTION_BIT) | (24 << MANTISSA_BIT); 
     USART->CR1 |= MASK(TX_BIT); 
     USART->CR1 |= MASK(RX_BIT);
-    USART->CR1 |= MASK(UE_BIT);
 }
 
 void send_char(unsigned char c) {
