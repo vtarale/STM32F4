@@ -32,14 +32,15 @@ typedef struct usart USART; // uart or usart
 #define RX_BIT 2
 #define TC_BIT 6
 #define RXNE_BIT 5
+#define M_BIT 12
 
 #define USART_CLOCK_BIT 17
 #define ENABLE_CLOCK_USART (RCC->APB1ENR |= MASK(USART_CLOCK_BIT))
 
 void set_usart();
-void send_char(char c);
-void send_string(char *s);
-char get_char();
+void send_char(unsigned char c);
+void send_string(unsigned char *s);
+unsigned char get_char();
 int poll_rx();
 char read_usart();
 
