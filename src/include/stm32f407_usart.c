@@ -21,16 +21,16 @@ void set_usart() {
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_0);
     set_ospeedr(GPIOA, OSPEEDR_VERY_HIGH_SPEED, USART_PIN_1);
     USART->CR1 = 0x00;
-    USART->CR1 |= MASK(UE_BIT);
     USART->CR1 &= ~MASK(12);
-    USART->BRR |= (7 << FRACTION_BIT) | (24 << MANTISSA_BIT); 
+    USART->BRR = 0x8A;
     USART->CR1 |= MASK(TX_BIT); 
     USART->CR1 |= MASK(RX_BIT);
+    USART->CR1 |= MASK(UE_BIT);
 }
 
 void send_char(unsigned char c) {
-    USART->DR = c;
     while(!(USART->SR & MASK(TC_BIT)));
+    USART->DR = c;
 }
 
 void send_string(unsigned char *s) {

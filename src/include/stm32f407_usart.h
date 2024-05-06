@@ -17,10 +17,10 @@ struct usart {
     __vui GTPR;
 };
 
-typedef struct usart USART; // uart or usart
+// typedef struct usart USART; // uart or usart
 
 #define USART_ADDY 0x40004400U
-#define USART ((USART *)USART_ADDY)
+#define USART ((struct usart *)USART_ADDY)
 
 #define USART_PIN_0 2
 #define USART_PIN_1 3
