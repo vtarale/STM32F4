@@ -5,7 +5,7 @@ compile_adc:
 compile_usart:
 	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib usart.c include/stm32f407_gpio.c include/stm32f407_usart.c -o main.elf
 run:
-	openocd --file stm.cfg -c "program main.elf verify reset exit" 
+	sudo openocd --file stm.cfg -c "program main.elf verify reset exit" 
 debug:
 	openocd --file stm.cfg
 read:

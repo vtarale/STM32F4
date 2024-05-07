@@ -43,5 +43,8 @@ void send_string(unsigned char *s);
 unsigned char get_char();
 int poll_rx();
 char read_usart();
+void swap(char *a, char *b);
+void reverse(char *str, int length);
+char *itoa(int num, char *str, int base);
 
 #endif

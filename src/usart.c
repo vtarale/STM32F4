@@ -19,9 +19,15 @@ int start() {
     set_pupdr(GPIOD, PUPDR_NO_PULL_UP_DOWN, PIN_12);
     int check;
     char c;
+    char buf[10];
     while (1) {
         check = LOW;
-        send_char('h');
+        send_string(itoa(69, buf, 10));
+        send_string("\n\r");
+        send_string(itoa(420, buf, 10));
+        send_string("\n\r");
+        send_string("Skibbidy toilet, gyattt!!!!");
+        send_string("\n\r");
         write(GPIOD, HIGH, PIN_12);
         delay(500000);
         check = poll_rx();
