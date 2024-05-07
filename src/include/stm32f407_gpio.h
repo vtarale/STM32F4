@@ -2,8 +2,8 @@
 Author: Vihaan Tarale
 */
 
-#ifndef COOLSTUFF
-#define COOLSTUFF
+#ifndef COOLSTUFF1
+#define COOLSTUFF1
 
 #define __vui volatile unsigned int
 

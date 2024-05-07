@@ -2,8 +2,8 @@
 Author: Vihaan Tarale
 */
 
-#ifndef COOLSTUFFF
-#define COOLSTUFFF
+#ifndef COOLSTUFFF2
+#define COOLSTUFFF2
 
 #include "stm32f407_gpio.h"
 
