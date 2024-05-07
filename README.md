@@ -6,7 +6,7 @@
 * `stm32f407_gpio.h` complete (now can be used !!). 
 * `light.c` complete.
 * `ADC` testing going on.
-* `USART` testing going on.
+* `USART` complete.
 
 **Under Development:**
 * `DAC` implementation left.
