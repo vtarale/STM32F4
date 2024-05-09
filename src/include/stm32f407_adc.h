@@ -6,6 +6,7 @@ Author: Vihaan Tarale
 #define COOLSTUFFF2
 
 #include "stm32f407_gpio.h"
+#include "stm32f407_usart.h"
 
 struct adc {
     __vui SR;
@@ -79,6 +80,7 @@ These bits are written by software to select the resolution of the conversion
 #define ADCON_BIT 0
 #define EOCS_BIT 10
 #define EOC_BIT 1
+#define CONT_BIT 1
 
 #define CHANEL_0 0
 #define CHANEL_1 1
@@ -136,7 +138,7 @@ These bits are written by software to select the resolution of the conversion
 #define ENABLE_EOCS(x) (x->CR2 |= MASK(EOCS_BIT))
 #define DISABLE_EOCS(x) (x->CR2 &= ~MASK(EOCS_BIT))
 
-void set_adc(ADC *x, int res, int scan, int no_of_convo); // regular channels only
+void set_adc(ADC *x, int res, int no_of_convo, GPIO *y,int gpio_val, int pin); // regular channels only
 void set_sampling_time(ADC *x, int channel, int sampling_time);
 unsigned int start_convo(ADC *x);
 

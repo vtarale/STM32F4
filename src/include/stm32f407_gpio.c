@@ -21,9 +21,11 @@ void reset_handler(void) {
     start();
 }
 
+extern int __stack_top__;
+
 // Vector Table 
 unsigned int vector_table[96] __attribute__((section(".vec"))) = {
-	0x20001000u, GET_FUNC_ADDY(reset_handler),
+	(unsigned int)&__stack_top__, GET_FUNC_ADDY(reset_handler),
 	0x00, 0x00,
 	0x00, 0x00,
 	0x00, 0x00,

@@ -31,3 +31,5 @@ SECTIONS
       _end_bss = .;
     } > RAM AT > RAM
 }
+
+__stack_top__ = ORIGIN(RAM) + LENGTH(RAM) - 4;
