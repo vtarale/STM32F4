@@ -32,5 +32,5 @@ unsigned int start_convo(ADC *x) {
     while(!(x->SR & MASK(EOC_BIT)));
     unsigned int result = x->DR;
     x->CR2 &= ~MASK(SWSTART_BIT);
-    return result;
+    return x->DR;
 }
