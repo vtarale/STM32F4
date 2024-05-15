@@ -7,9 +7,11 @@
 * `light.c` complete.
 * `ADC` complete.
 * `USART` complete.
+* `DAC` is getting coded.
 
 **Under Development:**
-* `DAC` implementation left.
+* `DAC`
+* `PID controller` : the next thing after `DAC`
 
 ## Prequistes
 * To flash code on board - `openocd`
