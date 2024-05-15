@@ -12,7 +12,7 @@ void delay(int time) {
 
 int start() {
     ENABLE_CLOCK_ADC(ADC_1_CLOCK_BIT);
-    set_adc(ADC_1, RES_8, 1, GPIOA, GPIOA_VAL, PIN_0);
+    set_adc(ADC_1, RES_12, 1, GPIOA, GPIOA_VAL, PIN_0);
     SET_SQ_1(ADC_1, CHANEL_0);
     set_sampling_time(ADC_1, CHANEL_0, CYCLES_480);
     ENABLE_ADCON(ADC_1);
@@ -32,7 +32,7 @@ int start() {
 
     while(1) {
         result = start_convo(ADC_1);
-        temp = (result * 8) / 10000;
+        // temp = (result * 8) / 10000;
         temp = (result/4095*3000);
         send_string(itoa(counter, buf2, 10));
         send_string("Convo start\n\r");

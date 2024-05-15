@@ -5,7 +5,7 @@
 ## Current Status
 * `stm32f407_gpio.h` complete (now can be used !!). 
 * `light.c` complete.
-* `ADC` testing going on.
+* `ADC` complete.
 * `USART` complete.
 
 **Under Development:**
