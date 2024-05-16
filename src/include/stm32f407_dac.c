@@ -9,10 +9,16 @@ void write_dac(int bit, int val, int channel);
 
 void set_dac(int channel, int buffer) {
     DAC->CR = 0x00;
+    ENABLE_CLOCK_GPIO(GPIOA_VAL);
+    RCC->APB1ENR |= MASK(29);
     if (channel == CHANEL_1) {
+        set_moder(GPIOA, MODER_ANALOG, PIN_4);
+        set_pupdr(GPIOA, PUPDR_NO_PULL_UP_DOWN, PIN_4);
         DAC->CR = buffer << 17;
         DAC->CR |= MASK(16);
     } else if (channel == CHANEL_2) {
+        set_moder(GPIOA, MODER_ANALOG, PIN_5);
+        set_pupdr(GPIOA, PUPDR_NO_PULL_UP_DOWN, PIN_5);
         DAC->CR = buffer << 1;
         DAC->CR |= MASK(0);
     } else {

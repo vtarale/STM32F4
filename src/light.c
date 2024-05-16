@@ -4,7 +4,7 @@ Author: Vihaan Tarale
 
 // running test program to check header file and code
 
-#include "include/stm32f407_gpio.h"
+#include "include/stm32f407.h"
 
 void delay(int time) {
     volatile int x = time;

@@ -2,7 +2,7 @@
 Author: Vihaan Tarale
 */
 
-#include "include/stm32f407_adc.h"
+#include "include/stm32f407.h"
 
 void delay(int time) {
     volatile int x = time;

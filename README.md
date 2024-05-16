@@ -4,13 +4,14 @@
 
 ## Current Status
 * `stm32f407_gpio.h` complete (now can be used !!). 
+* `stm32f407_usart.h` complete (now can be used !!). 
+* `stm32f407_adc.h` complete (now can be used !!). 
 * `light.c` complete.
 * `ADC` complete.
 * `USART` complete.
-* `DAC` is getting coded.
+* `DAC` testing going on.
 
 **Under Development:**
-* `DAC`
 * `PID controller` : the next thing after `DAC`
 
 ## Prequistes
@@ -43,19 +44,23 @@ $ make compile_adc
 ```
 $ make compile_usart
 ```
-4. To `flash` the code onto the board:
+4. To compile `dac.c`:
+```
+$ make compile_dac
+```
+5. To `flash` the code onto the board:
 ```
 $ make run
 ```
-5. To `debug`:
+6. To `debug`:
 ```
 $ make debug
 ```
-6. To analyze(recheck) the code and see the memory (`readelf`):
+7. To analyze(recheck) the code and see the memory (`readelf`):
 ```
 $ make read
 ```
-7. To clean (clear `object files`):
+8. To clean (clear `object files`):
 ```
 $ make clean
 ```
