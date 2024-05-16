@@ -6,6 +6,7 @@ Author: Vihaan Tarale
 #define COOLSTUFFF4
 
 #include "stm32f407_gpio.h"
+#include "stm32f407_adc.h"
 
 struct dac {
     __vui CR;
@@ -24,8 +25,14 @@ struct dac {
     __vui SR;    
 };
 
-typedef struct dac DAC;
-
 #define DAC_ADDY 0x40007400U
+
+#define DAC ((struct dac *)DAC_ADDY)
+
+#define BIT_8 0
+#define BIT_12 1
+
+void set_dac(int channel, int buffer);
+void write_dac(int bit, int val, int channel);
 
 #endif
