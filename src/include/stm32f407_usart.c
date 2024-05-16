@@ -60,6 +60,8 @@ char read_usart() {
     return (char)USART->DR;
 }
 
+// Taken from github
+
 void swap(char *a, char *b) {    
     if(!a || !b)
         return;
