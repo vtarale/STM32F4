@@ -13,9 +13,10 @@ void set_otyper(GPIO *x, int state, int pin);
 void set_ospeedr(GPIO *x, int state, int pin);
 void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
-void write(GPIO *x, int state, int pin);
-int read(GPIO *x, int pin);
+void digital_write(GPIO *x, int state, int pin);
+int digital_read(GPIO *x, int pin);
 void set_af(GPIO *x, int function, int pin);
+void delay(int time);
 
 void reset_handler(void) {
     start();
@@ -126,14 +127,14 @@ void set_bsrr(GPIO *x, int state, int pin) {
     x->BSRR |= state << bit;
 }
 
-void write(GPIO *x, int state, int pin) {
+void digital_write(GPIO *x, int state, int pin) {
     if (state == HIGH)
         x->ODR |= MASK(pin);
     else
         x->ODR &= ~MASK(pin);
 }
 
-int read(GPIO *x, int pin) {
+int digital_read(GPIO *x, int pin) {
     if (!(x->IDR &(MASK(pin))))
         return HIGH;
     return LOW;
@@ -144,4 +145,10 @@ void set_af(GPIO *x, int function, int pin) {
         x->AFR_1 |= function << (pin * 4);
     else
         x->AFR_2 |= function << (pin * 4);
+}
+
+void delay(int time) {
+    volatile int x = time;
+    while (x != 0)
+        --x;
 }

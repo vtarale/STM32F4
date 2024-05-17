@@ -8,7 +8,6 @@ void set_dac(int channel, int buffer);
 void write_dac(int bit, int val, int channel);
 
 void set_dac(int channel, int buffer) {
-    DAC->CR = 0x00;
     ENABLE_CLOCK_GPIO(GPIOA_VAL);
     RCC->APB1ENR |= MASK(29);
     if (channel == CHANEL_1) {

@@ -4,12 +4,6 @@ Author: Vihaan Tarale
 
 #include "include/stm32f407.h"
 
-void delay(int time) {
-    volatile int x = time;
-    while (x != 0)
-        --x;
-}
-
 int start() {
     set_usart();
     ENABLE_CLOCK_GPIO(GPIOD_VAL);
@@ -28,13 +22,13 @@ int start() {
         send_string("\n\r");
         send_string("Skibbidy toilet, gyattt!!!!");
         send_string("\n\r");
-        write(GPIOD, HIGH, PIN_12);
+        digital_write(GPIOD, HIGH, PIN_12);
         delay(500000);
         check = poll_rx();
         if (check == HIGH){
             c = read_usart();
             send_char(c);
-            write(GPIOD, LOW, PIN_12);
+            digital_write(GPIOD, LOW, PIN_12);
             delay(500000);
         }
     }

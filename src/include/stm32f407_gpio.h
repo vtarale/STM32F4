@@ -242,8 +242,9 @@ void set_otyper(GPIO *x, int state, int pin);
 void set_ospeedr(GPIO *x, int state, int pin);
 void set_pupdr(GPIO *x, int state, int pin);
 void set_bsrr(GPIO *x, int state, int pin);
-void write(GPIO *x, int state, int pin);
-int read(GPIO *x, int pin);
+void digital_write(GPIO *x, int state, int pin);
+int digital_read(GPIO *x, int pin);
 void set_af(GPIO *x, int function, int pin);
+void delay(int time);
 
 #endif
