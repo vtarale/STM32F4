@@ -5,11 +5,12 @@
 ## Current Status
 * `stm32f407_gpio.h` complete (now can be used !!). 
 * `stm32f407_usart.h` complete (now can be used !!). 
-* `stm32f407_adc.h` complete (now can be used !!). 
+* `stm32f407_adc.h` complete (now can be used !!).
+* * `stm32f407_dac.h` complete (now can be used !!). 
 * `light.c` complete.
 * `ADC` complete.
 * `USART` complete.
-* `DAC` testing going on.
+* `DAC` complete.
 
 **Under Development:**
 * `PID controller` : the next thing after `DAC`
