@@ -32,6 +32,19 @@ struct dac {
 #define BIT_8 0
 #define BIT_12 1
 
+#define DAC_CLOCK_BIT 29
+
+#define SWTRIGR_1 0
+#define SWTRIGR_2 1
+#define TEN_1 2
+#define TEN_2 18
+#define TSEL_1 3
+#define TSEL_2 19
+#define BOFF_1 1
+#define BOFF_2 17
+#define EN_1 0
+#define EN_2 16
+
 void set_dac(int channel, int buffer);
 void write_dac(int bit, int val, int channel);
 
