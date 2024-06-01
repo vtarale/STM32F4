@@ -9,5 +9,6 @@ Author: Vihaan Tarale
 #include "stm32f407_dac.h"
 #include "stm32f407_gpio.h"
 #include "stm32f407_usart.h"
+#include "stm32f407_pwm.h"
 
 #endif
