@@ -6,6 +6,7 @@ Author: Vihaan Tarale
 #define COOLSTUFF7
 
 #include "stm32f407_gpio.h"
+#include "stm32f407_adc.h"
 
 struct timer {
     __vui CR1;
@@ -45,11 +46,26 @@ struct timer {
 #define TIM4 ((struct timer *)TIM4_ADDY)
 #define TIM5 ((struct timer *)TIM5_ADDY)
 
+#define PWM1 6
+#define PWM2 7
+
 #define ENABLE_CLOCK_TIM(x) (RCC->APB1ENR |= MASK(x))
 
 #define CEN_BIT 0
 
+#define OC1M_BIT 4
+#define OC2M_BIT 12
+#define OC3M_BIT 4
+#define OC4M_BIT 12
 
-void set_pwm(struct timer *x, int timer_val);
+#define CC1P_BIT 1
+#define CC2P_BIT 5
+#define CC3P_BIT 9
+#define CC4P_BIT 13
+
+#define SET_PWM_CHANNEL_CCMR1(x,y, z) (x->CCMR1 = y << z)
+#define SET_PWM_CHANNEL_CCMR2(x,y, z) (x->CCMR2 = y << z)
+
+void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity);
 
 #endif
