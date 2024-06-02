@@ -34,7 +34,7 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             x->CCMR2 |= MASK(OC4PE_BIT);
             break;   
     }
-    if (polarity = LOW) {
+    if (polarity == LOW) {
         switch (channel) {
         case CHANEL_1:
             x->CCER |= MASK(CC1P_BIT);
@@ -51,12 +51,13 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
         }
     }
     UPDATE_PWM(x);
+    TURN_ON_PWM(x);
 }
 
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel) {
     int pulse_length = ((8399 + 1) * duty_cycle) / 100 - 1;
     if (channel = CHANEL_1)
-        x->CCR1 = pulse_length << 0;
+        x->CCR1 = pulse_length & 0xFFFF;
     else if (channel = CHANEL_2)
         x->CCR2 = pulse_length << 0;
     else if (channel = CHANEL_3)
