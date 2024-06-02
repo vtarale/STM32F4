@@ -63,9 +63,20 @@ struct timer {
 #define CC3P_BIT 9
 #define CC4P_BIT 13
 
-#define SET_PWM_CHANNEL_CCMR1(x,y, z) (x->CCMR1 = y << z)
-#define SET_PWM_CHANNEL_CCMR2(x,y, z) (x->CCMR2 = y << z)
+#define OC1PE_BIT 3
+#define OC2PE_BIT 11
+#define OC3PE_BIT 3
+#define OC4PE_BIT 11
+
+#define ARPE_BIT 7
+
+#define UG_BIT 0
+
+#define UPDATE_PWM(x) (x->EGR |= MASK(UG_BIT))
+#define TURN_ON_PWM(x) (x->CR1 |= MASK(CEN_BIT))
+#define TURN_OFF_PWM(x) (x->CR1 &= ~(MASK(CEN_BIT)))
 
 void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity);
+void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
 
 #endif

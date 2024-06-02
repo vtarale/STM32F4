@@ -5,10 +5,12 @@ Author: Vihaan Tarale
 #include "stm32f407_pwm.h"
 
 void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity);
+void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
 
 void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity) {
     ENABLE_CLOCK_TIM(timer_val);
     x->ARR = 8399 & 0xFFFF;
+    x->CR1 |= MASK(ARPE_BIT);
     /*
     x->CCMR1 = 7 << 4;
     x->CCER |= MASK(1);
@@ -17,15 +19,19 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
     switch (channel) {
         case CHANEL_1:
             x->CCMR1 = pwm_no << OC1M_BIT;
+            x->CCMR1 |= MASK(OC1PE_BIT);
             break;   
         case CHANEL_2:
             x->CCMR1 = pwm_no << OC2M_BIT;
+            x->CCMR1 |= MASK(OC2PE_BIT);
             break;   
         case CHANEL_3:
             x->CCMR2 = pwm_no << OC3M_BIT;
+            x->CCMR2 |= MASK(OC3PE_BIT);
             break;   
         case CHANEL_4:
-            x->CCMR2 = pwm_no << OC4M_BIT;
+            x->CCMR2 = pwm_no << OC4M_BIT;\
+            x->CCMR2 |= MASK(OC4PE_BIT);
             break;   
     }
     if (polarity = LOW) {
@@ -44,6 +50,18 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
         }
     }
-        
-   
+    UPDATE_PWM(x);
+}
+
+void set_duty_cycle(struct timer *x, int duty_cycle, int channel) {
+    int pulse_length = ((8399 + 1) * duty_cycle) / 100 - 1;
+    if (channel = CHANEL_1)
+        x->CCR1 = pulse_length << 0;
+    else if (channel = CHANEL_2)
+        x->CCR2 = pulse_length << 0;
+    else if (channel = CHANEL_3)
+        x->CCR3 = pulse_length << 0;
+    else 
+        x->CCR4 = pulse_length << 0;
+    UPDATE_PWM(x);
 }
