@@ -9,7 +9,7 @@ void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
 
 void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity) {
     ENABLE_CLOCK_TIM(timer_val);
-    x->ARR = 8399 & 0xFFFF;
+    x->ARR = 8399;
     x->CR1 |= MASK(ARPE_BIT);
     /*
     x->CCMR1 = 7 << 4;
@@ -50,19 +50,22 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
         }
     }
+    x->CCR1 = 8399;
     UPDATE_PWM(x);
     TURN_ON_PWM(x);
 }
 
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel) {
-    int pulse_length = ((8399 + 1) * duty_cycle) / 100 - 1;
+    unsigned int pulse_length = ((8399 + 1) * duty_cycle) / 100 - 1;
+    // TURN_OFF_PWM(x);
     if (channel = CHANEL_1)
-        x->CCR1 = pulse_length & 0xFFFF;
+        x->CCR1 = pulse_length;
     else if (channel = CHANEL_2)
-        x->CCR2 = pulse_length << 0;
+        x->CCR2 = pulse_length;
     else if (channel = CHANEL_3)
-        x->CCR3 = pulse_length << 0;
+        x->CCR3 = pulse_length;
     else 
-        x->CCR4 = pulse_length << 0;
+        x->CCR4 = pulse_length;
     UPDATE_PWM(x);
+    // TURN_ON_PWM(x);
 }

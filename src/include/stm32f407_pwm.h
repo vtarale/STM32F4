@@ -37,9 +37,9 @@ struct timer {
 #define TIM5_ADDY 0x40000C00U
 
 #define TIM2_VAL 0
-#define TIM3_VAL 0
-#define TIM4_VAL 0
-#define TIM5_VAL 0
+#define TIM3_VAL 1
+#define TIM4_VAL 2
+#define TIM5_VAL 3
 
 #define TIM2 ((struct timer *)TIM2_ADDY)
 #define TIM3 ((struct timer *)TIM3_ADDY)

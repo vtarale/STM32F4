@@ -31,10 +31,10 @@ void write_dac(int bit, int val, int channel) {
     if (channel == CHANEL_1) {
         if (bit == BIT_12) {
             DAC->DHR12R1 = 0x00;
-            DAC->DHR12R1 = val & 0xFFF;
+            DAC->DHR12R1 = val;
         } else {
             DAC->DHR8R1 = 0x00;
-            DAC->DHR8R1 = val & 0xFF;
+            DAC->DHR8R1 = val;
         }
         // DAC->SWTRIGR |= MASK(SWTRIGR_1);
     } else {
@@ -43,7 +43,7 @@ void write_dac(int bit, int val, int channel) {
             DAC->DHR12R2 = val;
         } else {
             DAC->DHR8R2 = 0x00;
-            DAC->DHR8R2 = val & 0xFF;
+            DAC->DHR8R2 = val;
         }
         // DAC->SWTRIGR |= MASK(SWTRIGR_2);
     }
