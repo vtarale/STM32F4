@@ -11,9 +11,11 @@
 * `ADC` complete.
 * `USART` complete.
 * `DAC` complete.
+* `PWM` fixing bugs
 
 **Under Development:**
-* `PID controller` : the next thing after `DAC`
+* Make `README` better
+* `PID controller` : the next thing after `PWM`
 
 ## Prequistes
 * To flash code on board - `openocd`
