@@ -21,11 +21,12 @@ struct timer {
     __vui CNT;
     __vui PSC;
     __vui ARR;
+    __vui RESERVED_1;
     __vui CCR1;
     __vui CCR2;
     __vui CCR3;
     __vui CCR4;
-    __vui TEMP;
+    __vui RESERVED_2;
     __vui DCR;
     __vui DMAR;
     __vui TIM_OR;
