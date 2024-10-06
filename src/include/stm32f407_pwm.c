@@ -4,11 +4,13 @@ Author: Vihaan Tarale
 
 #include "stm32f407_pwm.h"
 
-void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity);
+void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity, int arr);
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
 
-void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity) {
+void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity, int arr) {
     ENABLE_CLOCK_TIM(timer_val);
+    x->CCMR1 = 0x00;
+    x->CCMR2 = 0x00;
     /*
     x->CCMR1 = 7 << 4;
     x->CCER |= MASK(1);
@@ -32,7 +34,8 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             x->CCMR2 |= MASK(OC4PE_BIT);
             break;   
     }
-    x->ARR = 8399;
+    x->PSC = APB1_CLOCK_SPEED - 1;
+    x->ARR = arr-1;
     x->CR1 |= MASK(ARPE_BIT);
 
     if (polarity == LOW) {
@@ -52,7 +55,7 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
         }
     }
     //TURN_ON_PWM(x);
-    x->CCR1 = 8399;
+    x->CCR1 = arr;
     UPDATE_PWM(x);
     TURN_ON_PWM(x);
 }

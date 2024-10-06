@@ -52,6 +52,8 @@ struct timer {
 
 #define ENABLE_CLOCK_TIM(x) (RCC->APB1ENR |= MASK(x))
 
+#define APB1_CLOCK_SPEED 42
+
 #define CEN_BIT 0
 
 #define OC1M_BIT 4
@@ -77,7 +79,7 @@ struct timer {
 #define TURN_ON_PWM(x) (x->CR1 |= MASK(CEN_BIT))
 #define TURN_OFF_PWM(x) (x->CR1 &= ~(MASK(CEN_BIT)))
 
-void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity);
+void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity, int arr);
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
 
 #endif
