@@ -54,14 +54,14 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
         }
     }
-    //TURN_ON_PWM(x);
+    TURN_ON_PWM(x);
     x->CCR1 = arr;
     UPDATE_PWM(x);
     TURN_ON_PWM(x);
 }
 
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel) {
-    unsigned int pulse_length = ((8399 + 1) * duty_cycle) / 100 - 1;
+    unsigned int pulse_length = ((x->ARR + 1) * duty_cycle) / 100 - 1;
     // TURN_OFF_PWM(x);
     if (channel = CHANEL_1)
         x->CCR1 = pulse_length;
