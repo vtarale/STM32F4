@@ -16,9 +16,9 @@ int set_gpio() {
 
 int start() {
     set_gpio();
-    //set_usart()
+    set_usart();
     set_pwm(TIM4, TIM4_VAL, PWM1, CHANEL_1, HIGH, 100);
-    //send_string("ok\n\r");
+    send_string("ok\n\r");
     set_duty_cycle(TIM4, 100, CHANEL_1);
     while(1) {}
 }
