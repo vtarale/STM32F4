@@ -28,6 +28,7 @@ struct adc {
     __vui JDR2;
     __vui JDR3;
     __vui JDR4;
+    
     __vui DR;
 };
 
