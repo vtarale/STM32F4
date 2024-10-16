@@ -70,7 +70,6 @@ $ make clean
 
 ## References
 [RM0090 Reference manual](https://github.com/vtarale/STM32F4/blob/main/Datasheets/reference_manual.pdf)
-[STM32F407 Datasheet](https://github.com/vtarale/STM32F4/blob/main/Datasheets/datasheet.pdf)
 
 ## Lisence
 [MIT](https://github.com/vtarale/STM32F4/blob/main/LICENSE)
