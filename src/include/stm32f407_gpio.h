@@ -194,8 +194,8 @@ typedef struct gpio GPIO;
 	1: Sets the corresponding ODRx bit
 */
 
-#define BS_NO_ACTION 2
-#define BS_SET 3
+#define BS_NO_ACTION 0
+#define BS_SET 1
 
 /*
 	for AFRL and AFRH: 

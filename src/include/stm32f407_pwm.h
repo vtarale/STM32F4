@@ -61,15 +61,20 @@ struct timer {
 #define OC3M_BIT 4
 #define OC4M_BIT 12
 
+#define OC1PE_BIT 3
+#define OC2PE_BIT 11
+#define OC3PE_BIT 3
+#define OC4PE_BIT 11
+
 #define CC1P_BIT 1
 #define CC2P_BIT 5
 #define CC3P_BIT 9
 #define CC4P_BIT 13
 
-#define OC1PE_BIT 3
-#define OC2PE_BIT 11
-#define OC3PE_BIT 3
-#define OC4PE_BIT 11
+#define CC1E_BIT 0
+#define CC2E_BIT 4
+#define CC3E_BIT 8
+#define CC4E_BIT 12
 
 #define ARPE_BIT 7
 
