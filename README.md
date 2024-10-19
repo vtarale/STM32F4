@@ -38,7 +38,7 @@ make <command> // refer to Makefile at https://github.com/vtarale/STM32F4/blob/m
 
 ## References
 [RM0090 Reference manual](https://github.com/vtarale/STM32F4/blob/main/Datasheets/reference_manual.pdf) <br/>
-[STM32F407 Datasheet](https://github.com/vtarale/STM32F4/blob/main/Datasheets/datasheet.pdf)
+[STM32F407 Datasheet](https://github.com/vtarale/STM32F4/blob/main/Datasheets/datasheet.pdf) <br/>
 [Fundamentals of System-on-Chip Design on Arm Cortex-M Microcontrollers](https://www.arm.com/resources/education/books/fundamentals-soc)
 
 ## Lisence
