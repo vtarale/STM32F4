@@ -1,20 +1,10 @@
 # STM32F4
-* Using the `stm32f407-discovery` board.
-* Making PID Controller
+Creating custom header files for the `stm32f4`. Aim to create a pid controller at last. 
+The `stm32f4` is development board with `Arm Cortex-M4` arhitecture. It is `32 bit` proccesor with multiple `adcs`, a `dac`, `timers`, `clocks` and much more.
 
 ## Current Status
-* `stm32f407_gpio.h` complete (now can be used !!). 
-* `stm32f407_usart.h` complete (now can be used !!). 
-* `stm32f407_adc.h` complete (now can be used !!).
-* `stm32f407_dac.h` complete (now can be used !!). 
-* `light.c` complete.
-* `ADC` complete.
-* `USART` complete.
-* `DAC` complete.
-* `PWM` fixing bugs
-
-**Under Development:**
-* Make `README` better
+* Mostly all neccessary header files done except `stm32f407_pwm.h`
+* **Under Development:** debbuging the `PWM`
 * `PID controller` : the next thing after `PWM`
 
 ## Prequistes
@@ -22,8 +12,9 @@
 * Arm `32 bit` compiler - `arm-none-eabi-gcc`
 * `nostdlib`
 * For checking code and debugging - `readelf`
-* For debugging - `gdb`, `lldb` (for mac)
-* For `usart` - `qemu`
+* For debugging - `arm-none-eabi-gdb`
+* For `usart` - `coolTerm`(for mac), `minicom`
+* Can be downloaded for `linux` and mac from [HomeBrew](brew.sh)
 
 ## Using the Library
 **Caution**: while using library `global variables` can't be used.
@@ -33,44 +24,22 @@ int start() {                   // has to be always int
   ...
 }
 ```
+**Will write the documentation for each library soon**
 
 ## Running the Code !
-1. To compile `light.c`:
+* Manually running the code
 ```
-$ make compile_light
+ arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib <example.c> include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
 ```
-2. To compile `adc.c`:
+* Using the Makefile
 ```
-$ make compile_adc
-```
-3. To compile `usart.c`:
-```
-$ make compile_usart
-```
-4. To compile `dac.c`:
-```
-$ make compile_dac
-```
-5. To `flash` the code onto the board:
-```
-$ make run
-```
-6. To `debug`:
-```
-$ make debug
-```
-7. To analyze(recheck) the code and see the memory (`readelf`):
-```
-$ make read
-```
-8. To clean (clear `object files`):
-```
-$ make clean
+make <command> // refer to Makefile at https://github.com/vtarale/STM32F4/blob/main/src/Makefile
 ```
 
 ## References
 [RM0090 Reference manual](https://github.com/vtarale/STM32F4/blob/main/Datasheets/reference_manual.pdf) <br/>
 [STM32F407 Datasheet](https://github.com/vtarale/STM32F4/blob/main/Datasheets/datasheet.pdf)
+[Fundamentals of System-on-Chip Design on Arm Cortex-M Microcontrollers](https://www.arm.com/resources/education/books/fundamentals-soc)
 
 ## Lisence
 [MIT](https://github.com/vtarale/STM32F4/blob/main/LICENSE)
