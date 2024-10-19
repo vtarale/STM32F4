@@ -25,7 +25,6 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
         case CHANEL_2:
             x->CCMR1 |= pwm_no << OC2M_BIT;
             x->CCMR1 |= MASK(OC2PE_BIT);
-            x->CCER |= MASK(CC2E_BIT);
             break;   
         case CHANEL_3:
             x->CCMR2 |= pwm_no << OC3M_BIT;
@@ -39,6 +38,7 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
     }
     x->PSC = 2 * (APB1_CLOCK_SPEED) - 1;
+    x->ARR = 0x00;
     x->ARR = arr-1;
     x->CR1 |= MASK(ARPE_BIT);
 
@@ -59,9 +59,10 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
         }
     }
     x->CCR2 = arr-1;
-    x->EGR |= MASK(UG_BIT);
-    TURN_ON_PWM(x);
-    x->EGR |= MASK(UG_BIT);
+    UPDATE_PWM(x);
+    x->CCER |= MASK(CC2E_BIT);
+    // TURN_ON_PWM(x);
+    // x->EGR |= MASK(UG_BIT);
     // TURN_ON_PWM(x);
 }
 
