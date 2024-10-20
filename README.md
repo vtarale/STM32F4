@@ -1,6 +1,6 @@
 # STM32F4
 Creating custom header files for the `stm32f4`. Aim to create a pid controller at last. 
-The `stm32f4` is development board with `Arm Cortex-M4` arhitecture. It is `32 bit` proccesor. The STM32F4 has multiple `adcs`,  `timers`, `clocks`, a `dac`, and much more.
+The `stm32f4` is development board with `Arm Cortex-M4` arhitecture. It is `32 bit` a proccesor. The STM32F4 has multiple `adcs`,  `timers`, `clocks`, a `dac`, and much more.
 
 ## Current Status
 * Mostly all neccessary header files done except `stm32f407_pwm.h`
