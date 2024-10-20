@@ -3,6 +3,7 @@ Author: Vihaan Tarale
 */
 
 #include "stm32f407_pwm.h"
+#include "stm32f407_usart.h"
 
 void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polarity, int arr);
 void set_duty_cycle(struct timer *x, int duty_cycle, int channel);
@@ -41,6 +42,9 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
     x->ARR = 0x00;
     x->ARR = arr-1;
     x->CR1 |= MASK(ARPE_BIT);
+    char buf_1[17];
+    send_string(itoa(x->SR, buf_1, 2)); // trying to debug
+    send_string("\n");  
 
     if (polarity == LOW) {
         switch (channel) {
@@ -58,9 +62,17 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
         }
     }
+    x->SR = 0x00;
     x->CCR2 = arr-1;
     UPDATE_PWM(x);
-    x->CCER |= MASK(CC2E_BIT);
+    //x->CCER |= MASK(CC2E_BIT);
+    TURN_ON_PWM(x);
+    char buf[17];
+    send_string(itoa(x->CR1, buf, 2)); // trying to debug
+    send_string("\n");  
+    char buf_2[17];
+    send_string(itoa(x->SR, buf_2, 2));
+    send_string("\n");
     // TURN_ON_PWM(x);
     // x->EGR |= MASK(UG_BIT);
     // TURN_ON_PWM(x);
