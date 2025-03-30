@@ -34,3 +34,5 @@ run:
 debug:
 	openocd --file $(CONFIG_FILE)
 
+clean:
+	rm -f *.out *.elf *.lst *.debug *.o *.obj
