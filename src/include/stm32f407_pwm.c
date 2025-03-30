@@ -65,9 +65,20 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
     x->SR = 0x00;
     x->CCR2 = arr-1;
     UPDATE_PWM(x);
-    //x->CCER |= MASK(CC2E_BIT);
+    x->CCER |= MASK(CC2E_BIT);
     TURN_ON_PWM(x);
+    x->SR = 0x00;
     char buf[17];
+    send_string(itoa(x->ARR, buf, 2)); // trying to debug
+    send_string("\n");  
+    send_string(itoa(x->CCR1, buf, 2)); // trying to debug
+    send_string("\n");  
+    send_string(itoa(x->CCR2, buf, 2)); // trying to debug
+    send_string("\n");  
+    send_string(itoa(x->CCR3, buf, 2)); // trying to debug
+    send_string("\n");  
+    send_string(itoa(x->CCR4, buf, 2)); // trying to debug
+    send_string("\n");  
     send_string(itoa(x->CR1, buf, 2)); // trying to debug
     send_string("\n");  
     char buf_2[17];

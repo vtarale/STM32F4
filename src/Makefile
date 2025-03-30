@@ -1,18 +1,41 @@
-compile_light:
-	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib light.c include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
-compile_adc:
-	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib adc.c include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
-compile_usart:
-	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib usart.c include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
-compile_dac:
-	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib dac.c include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
-compile_pwm:
-	arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib pwm.c include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf	
+PROJ = main
+CPU ?= cortex-m4
+BOARD ?= stm32f407discovery
+LINKER_SCRIPT = start.ld
+INC_PATH = ./include
+CONFIG_FILE = stm.cfg
+
+INC = -I$(INC_PATH)/include/
+CFLAGS = -g -T$(LINKER_SCRIPT) -mcpu=$(CPU) -mthumb -mtune=$(CPU) -fbuiltin -ffreestanding -nostdlib
+
+.PHONY: all
+all: $(PROJ).elf
+
+OBJ = $(TARGET).o \
+				$(INC_PATH)/stm32f407_adc.o
+				$(INC_PATH)/stm32f407_pwm.o
+				$(INC_PATH)/stm32f407_dac.o
+				$(INC_PATH)/stm32f407_gpio.o
+				$(INC_PATH)/stm32f407_usart.o
+
+%.o: %.c
+	arm-none-eabi-gcc $(INC) -mthumb -mcpu=$(CPU) -g -c $^ -o $@
+
+$(PROJ).elf: $(OBJ)
+	arm-none-eabi-ld -Tmap.ld $^ -o $@
+	arm-none-eabi-objdump -D -S $@ > $@.lst
+	arm-none-eabi-readelf -a $@ > $@.debug
+
+arm-none-eabi-gcc $(CFLAGS) $(TARGET).c $(COMMON_FILES) -o $(PROJ).elf
+
 run:
-	sudo openocd --file stm.cfg -c "program main.elf verify reset exit" 
+	sudo openocd --file $(CONFIG_FILE) -c "program $(PROJ).elf verify reset exit"
+
 debug:
-	openocd --file stm.cfg
+	openocd --file $(CONFIG_FILE)
+
 read:
-	readelf -a main.elf
+	readelf -a $(PROJ).elf
+
 clean:
-	rm *.elf
+	rm -rf *.out *.elf *.lst *.debug *.o *.obj
