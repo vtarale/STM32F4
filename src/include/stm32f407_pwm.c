@@ -39,12 +39,12 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
             break;   
     }
     x->PSC = 2 * (APB1_CLOCK_SPEED) - 1;
-    x->ARR = 0x00;
+    //x->ARR = 0x00;
     x->ARR = arr-1;
     x->CR1 |= MASK(ARPE_BIT);
     char buf_1[17];
-    send_string(itoa(x->SR, buf_1, 2)); // trying to debug
-    send_string("\n");  
+    //send_string(itoa(x->SR, buf_1, 2)); // trying to debug
+    //send_string("\n");  
 
     if (polarity == LOW) {
         switch (channel) {
@@ -69,6 +69,7 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
     TURN_ON_PWM(x);
     x->SR = 0x00;
     char buf[17];
+    /*
     send_string(itoa(x->ARR, buf, 2)); // trying to debug
     send_string("\n");  
     send_string(itoa(x->CCR1, buf, 2)); // trying to debug
@@ -83,7 +84,7 @@ void set_pwm(struct timer *x, int timer_val, int pwm_no, int channel, int polari
     send_string("\n");  
     char buf_2[17];
     send_string(itoa(x->SR, buf_2, 2));
-    send_string("\n");
+    send_string("\n");*/
     // TURN_ON_PWM(x);
     // x->EGR |= MASK(UG_BIT);
     // TURN_ON_PWM(x);

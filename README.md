@@ -27,13 +27,24 @@ int start() {                   // has to be always int
 **Will write the documentation for each library soon**
 
 ## Running the Code !
-* Manually running the code
+* Compiling
 ```
- arm-none-eabi-gcc -g -Tstart.ld -mcpu=cortex-m4 -mthumb -mtune=cortex-m4 -fbuiltin -ffreestanding -nostdlib <example.c> include/stm32f407_gpio.c include/stm32f407_adc.c include/stm32f407_dac.c include/stm32f407_usart.c include/stm32f407_pwm.c -o main.elf
+ make TARGET=<filename>
 ```
-* Using the Makefile
+* Running
 ```
-make <command> // refer to Makefile at https://github.com/vtarale/STM32F4/blob/main/src/Makefile
+  make run
+```
+* Debugging
+```
+  make debug
+  make gdb(seperate terminal)
+```
+* Clean
+```
+  make clean
+  cd include/
+  make clean
 ```
 
 ## References

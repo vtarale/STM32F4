@@ -7,7 +7,7 @@ CONFIG_FILE = stm.cfg
 TARGET ?= light
 
 INC = -I$(INC_PATH)/
-CFLAGS = -g -T$(LINKER_SCRIPT) -mcpu=$(CPU) -mthumb -mtune=$(CPU) -fbuiltin -ffreestanding -nostdlib
+CFLAGS = -g -mcpu=$(CPU) -mthumb -mtune=$(CPU) -fbuiltin -ffreestanding -nostdlib
 
 OBJ = $(TARGET).o \
 	$(INC_PATH)/stm32f407.o \
@@ -21,7 +21,7 @@ OBJ = $(TARGET).o \
 all: $(PROJ).elf
 
 %.o: %.c
-	arm-none-eabi-gcc $(INC) -mthumb -mcpu=$(CPU) -g -c $^ -o $@
+	arm-none-eabi-gcc $(INC) $(CFLAGS) -c $^ -o $@
 
 $(PROJ).elf: $(OBJ)
 	arm-none-eabi-ld -T$(LINKER_SCRIPT) $^ -o $@
@@ -33,6 +33,9 @@ run:
 
 debug:
 	openocd --file $(CONFIG_FILE)
+
+gdb:
+	arm-none-eabi-gdb $(PROJ).elf
 
 clean:
 	rm -f *.out *.elf *.lst *.debug *.o *.obj
